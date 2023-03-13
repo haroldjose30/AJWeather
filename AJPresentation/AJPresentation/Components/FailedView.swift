@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct FailedView: View {
-    var message: String = "oops something went wrong."
+    var message: String? = nil
+    var action: (()-> Void)? = nil
     var body: some View {
-        Text(message)
+        VStack {
+            Text(message ?? Localizable.genericError)
+            if let action = action {
+                Button(Localizable.retry) {
+                    action()
+                }
+            }
+        }
     }
 }
 
 struct FailedView_Previews: PreviewProvider {
     static var previews: some View {
+        
         FailedView()
+            .previewDisplayName("Default")
+        
+        
+        FailedView(
+            message: "Custom error message"
+        )
+        .previewDisplayName("With Message")
+        
+        
+        FailedView(
+            message: "Custom error message",
+            action: {}
+        )
+        .previewDisplayName("With Button")
     }
 }

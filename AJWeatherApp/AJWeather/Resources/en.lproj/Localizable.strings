@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  AJWeatherApp
+
+  Created by Jose Harold on 13/03/2023.
+  
+*/
+"loading_message" = "Loading...";
+"generic_error_message" = "oops something went wrong.";
+"retry_button_title" = "retry";
+"empty_date" = "oops, no weather info was found, try another city.";
+
+

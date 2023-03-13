@@ -5,31 +5,64 @@
 //  Created by Jose Harold on 12/03/2023.
 //
 
+import Foundation
 import SwiftUI
-import AJDomain
 
-struct HomePage: View {
+public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
     
-    //TODO: add DI
-    @StateObject var viewModel: HomeViewModel = HomeViewModel()
+    @StateObject var viewModel: ViewModel
     
-    var body: some View {
+    public init(viewModel: ViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    public var body: some View {
         
-        switch viewModel.viewState {
-        case .initial,.loading:
-            LoadingView()
-        case .failed:
-            FailedView()
-        case .success(let data):
-            SuccessView(
-                data: data
-            )
+        Group {
+            switch viewModel.viewState {
+            case .idle:
+                Text("AJWeather")
+            case .loading:
+                LoadingView()
+            case let .failed(message,action):
+                FailedView(
+                    message: message,
+                    action: action
+                )
+            case .success(let data):
+                HomeSuccessView(
+                    data: data
+                )
+            }
+        }
+        .onAppear {
+            viewModel.loadData()
         }
     }
 }
 
 struct HomePage_Previews: PreviewProvider {
+    
     static var previews: some View {
-        HomePage()
+        
+        HomePage<FakeHomeViewMode>(
+            viewModel: FakeHomeViewMode()
+        )
+        .previewDisplayName("Default")
+        
+        HomePage<FakeHomeViewModeWithEmptyDate>(
+            viewModel: FakeHomeViewModeWithEmptyDate()
+        )
+        .previewDisplayName("EmptyDate")
+        
+        HomePage<FakeHomeViewModeWithError>(
+            viewModel: FakeHomeViewModeWithError()
+        )
+        .previewDisplayName("Error")
+        
+        HomePage<FakeHomeViewModeWithIdle>(
+            viewModel: FakeHomeViewModeWithIdle()
+        )
+        .previewDisplayName("Idle")
     }
 }

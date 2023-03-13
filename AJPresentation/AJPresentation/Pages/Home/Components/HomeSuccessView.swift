@@ -7,53 +7,50 @@
 
 import SwiftUI
 
-extension HomePage {
+struct HomeSuccessView: View {
     
-    struct HomeSuccessView: View {
+    let data: HomeViewObject
+    
+    var body: some View {
         
-        let data: HomeViewObject
+        VStack {
+            Text(data.title)
+                .font(.largeTitle)
+            
+            
+            if data.dates.isEmpty {
+                EmptyDateView()
+            } else {
+                List(data.dates, id: \.date) { dateGroup in
+                    Section(header: SectionView(text: dateGroup.date)) {
+                        ForEach(dateGroup.hours, id: \.time) { hourDetail in
+                            RowView(hour: hourDetail)
+                        }
+                    }
+                }.listStyle(.insetGrouped)
+            }
+            
+        }
+    }
+    
+    struct EmptyDateView: View {
         
         var body: some View {
-            
             VStack {
-                Text(data.title)
-                    .font(.largeTitle)
-                
-                
-                if data.dates.isEmpty {
-                    EmptyDateView()
-                } else {
-                    List(data.dates, id: \.date) { dateGroup in
-                        Section(header: SectionView(text: dateGroup.date)) {
-                            ForEach(dateGroup.hours, id: \.time) { hourDetail in
-                                RowView(hour: hourDetail)
-                            }
-                        }
-                    }.listStyle(.insetGrouped)
-                }
-               
-            }
-        }
-        
-        struct EmptyDateView: View {
-            
-            var body: some View {
-                VStack {
-                    Spacer()
-                    Text(Localizable.emptyDate)
-                        .font(.title2)
-                    Spacer()
-                }
+                Spacer()
+                Text(Localizable.emptyDate)
+                    .font(.title2)
+                Spacer()
             }
         }
     }
 }
 
-struct SuccessView_Previews: PreviewProvider {
+struct HomeSuccessView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        HomePage.HomeSuccessView(
+        HomeSuccessView(
             data: HomeViewObject(
                 title: "Aveiro,PT",
                 dates: [
