@@ -10,8 +10,6 @@
 		8480C90A29BDD98F00EFA553 /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480C90129BDD98E00EFA553 /* AJData.framework */; };
 		8480C90F29BDD98F00EFA553 /* AJDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C90E29BDD98F00EFA553 /* AJDataTests.swift */; };
 		8480C91029BDD98F00EFA553 /* AJData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8480C90429BDD98E00EFA553 /* AJData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8480C93029BE4F5100EFA553 /* AJHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 8480C92F29BE4F5100EFA553 /* AJHttpClient */; };
-		8480C93229BE4F6C00EFA553 /* AJDependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 8480C93129BE4F6C00EFA553 /* AJDependencyInjection */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +34,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8480C93229BE4F6C00EFA553 /* AJDependencyInjection in Frameworks */,
-				8480C93029BE4F5100EFA553 /* AJHttpClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +167,6 @@
 			);
 			name = AJData;
 			packageProductDependencies = (
-				8480C92F29BE4F5100EFA553 /* AJHttpClient */,
-				8480C93129BE4F6C00EFA553 /* AJDependencyInjection */,
 			);
 			productName = AJData;
 			productReference = 8480C90129BDD98E00EFA553 /* AJData.framework */;
@@ -522,17 +516,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8480C92F29BE4F5100EFA553 /* AJHttpClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AJHttpClient;
-		};
-		8480C93129BE4F6C00EFA553 /* AJDependencyInjection */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AJDependencyInjection;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8480C8F829BDD98E00EFA553 /* Project object */;
 }

@@ -47,12 +47,13 @@ final class GetWeatherByCityUseCaseTest: XCTestCase {
                 expectation.fulfill()
             },
             receiveValue: { forecastModel in
+                //assert
                 XCTAssertNotNil(forecastModel)
             }
         )
         .store(in: &cancellables)
 
-        //assert
+        
         waitForExpectations(timeout: 2)
     }
 }
