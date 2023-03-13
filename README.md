@@ -5,8 +5,8 @@
 Is an app that retrieves information from OpenWeather API, and list
 the daily weather forecast for the next five days for a specific city.
 
-Requirementes: 
- - Every day should be a section and every 3 hour forecast a cell within that
+Requirements: 
+ - Every day should be a section and every 3 hours forecast a cell within that
 section.
  - Sections must clearly show the date.
  - Cells must show the time and temperature
@@ -14,7 +14,7 @@ section.
 Extras:
 - Show the weather icon in each cell (download and cache it. Do not
 bundle it in the App)
-- Add a search bar to enable search of weather info for any city.
+- Add a search bar to enable the search of weather info for any city.
 - Store the city information for situations where there is not
 connection
 - Add a detailed view for each city, clicking on a stored city would
@@ -22,36 +22,40 @@ present all the info of the city model, including a map view with a
 pin on the city’s coordinates. 
 
 ## Project Structure:
+- The project was divided into layers to avoid mistakes, and guarantee context responsibilities.
 
 ### AJWeatherApp
+- IOS App, used to configure all dependency and deployment information
 
 ### AJPresentation
+- XCFramework project responsible for all UI Elements, here are all SwiftUI Pages, Components, ViewModels, and ViewObjects.
 
 ### AJDomain
+- XCFramework project responsible for business domain rules. UseCase and Models will stay here.
 
 ### AJData
+- XCFramework project responsible for  API requests, local database, repository, and DTOs.
 
 ### AJHttpClient
-
+- SPM - Swift Package Manager Project to be an independent component responsible for all HTTP request handlers.
 ### AJDependencyInjection
-
+- SPM - Swift Package Manager Project to be an independent component responsible for register and resolver dependency injections.
 
 ## TODO:
 
-[] Home Page
-    [X] Day section - 5 days
-    [] every 3 hour forecast a cell: with Icon, time and temperature
-    [] optional: With coredata, Store the city information for situations where there is not connection
-    [] optional: download and cache icon. Do not bundle it in the App.
-    [] optional: search City bar
+- [ ] Home Page
+    - [X] Day section - 5 days
+    - [ ] every 3 hour forecast a cell: with Icon, time and temperature
+    - [ ] optional: With coredata, Store the city information for situations where there is not connection
+    - [ ] optional: download and cache icon. Do not bundle it in the App.
+    - [ ] optional: search City bar
     
-[] optional: Detail City Page
-    [] detailed view for each city, resent all the info of the city model
-    [] map view with a pin on the city’s coordinates. 
+- [ ] optional: Detail City Page
+    - [ ] detailed view for each city, resent all the info of the city model
+    - [ ] map view with a pin on the city’s coordinates. 
     
-[] optional: Search City Page
+- [ ] optional: Search City Page
   
-
 
 ## Project Structure Draft:
 
@@ -115,10 +119,3 @@ LibHttp -> Swift Package Manager
 
 LibDI -> Swift Package Manager
     ServiceLocator.swift
-
-
-
-
-
-
- 
