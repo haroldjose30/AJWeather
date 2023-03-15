@@ -7,16 +7,18 @@
 
 import Combine
 
-//todo: remove public
-public final class GetWeatherByCityUseCase: GetWeatherByCityUseCaseType {
-    
-    public init() {}
+final class GetWeatherByCityUseCase: GetWeatherByCityUseCaseType {
     
     //TODO: add DI
     private var repository: FakeRepository = FakeRepository()
-    //TODO: add DI
-    private var scheduler: SchedulerType = SchedulerDefault()
+    
+    private let scheduler: SchedulerType
    
+    public init(
+        scheduler: SchedulerType
+    ) {
+        self.scheduler = scheduler
+    }
     
     public func execute(
         city: String,

@@ -5,7 +5,7 @@
 //  Created by Jose Harold on 14/03/2023.
 //
 
-public typealias FactoryClosure = (AJDIContainer) -> AnyObject
+public typealias FactoryClosure = (AJDIContainer) throws -> AnyObject
 
 public protocol AJDIContainerType {
     

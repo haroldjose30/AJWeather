@@ -6,22 +6,30 @@
 //
 
 import SwiftUI
+import AJDependencyInjection
 import AJPresentation
-import AJDomain
 
 @main
 struct AJWeatherApp: App {
+    
+    //TODO: add to a coordinator
+    private let viewModel: HomeViewModel
+    
+    init() {
+        
+        AJDIContainer().registerAllServices()
+        guard let viewModel = try? AJDIContainer().resolve(type: HomeViewModel.self) else {
+            fatalError("HomeViewModel not registered on DI")
+        }
+        self.viewModel = viewModel
+    }
+    
     var body: some Scene {
-        
-        //TODO: Add DI
-        let getWeatherByCityUseCase: GetWeatherByCityUseCaseType = GetWeatherByCityUseCase()
-        
+
         return WindowGroup {
-            
+
             HomePage<HomeViewModel>(
-                viewModel: HomeViewModel(
-                    getWeatherByCityUseCase: getWeatherByCityUseCase
-                )
+                viewModel: viewModel
             )
         }
     }

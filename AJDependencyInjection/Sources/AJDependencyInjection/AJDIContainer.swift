@@ -7,7 +7,7 @@
 
 public final class AJDIContainer: AJDIContainerType {
     
-    init() {}
+    public init() {}
     private static var _shared: AJDIContainer?
     private var shared: AJDIContainer {
         get {
@@ -36,7 +36,7 @@ public final class AJDIContainer: AJDIContainerType {
     ) throws -> Service  {
         
         let key = "\(type)"
-        guard let serviceUnwrapped = self.shared.services[key]?(self) as? Service else {
+        guard let serviceUnwrapped = try? self.shared.services[key]?(self) as? Service else {
             throw AJDIContainerError.serviceNotRegistered(type: key)
         }
         return serviceUnwrapped

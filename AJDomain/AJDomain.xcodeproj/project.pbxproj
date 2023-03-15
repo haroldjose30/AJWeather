@@ -21,6 +21,8 @@
 		8480C97029BE7F2E00EFA553 /* ForecastModel+Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C96F29BE7F2E00EFA553 /* ForecastModel+Detail.swift */; };
 		8480C97229BE7FAF00EFA553 /* ForecastModel+TemperatureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C97129BE7FAF00EFA553 /* ForecastModel+TemperatureDetail.swift */; };
 		8480C97429BE800300EFA553 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C97329BE800300EFA553 /* WeatherModel.swift */; };
+		84B843F129C154CB00A65394 /* AJDependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F029C154CB00A65394 /* AJDependencyInjection */; };
+		84B843F329C154F300A65394 /* AJDIContainer+registerFromDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B843F229C154F300A65394 /* AJDIContainer+registerFromDomain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 		8480C96F29BE7F2E00EFA553 /* ForecastModel+Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastModel+Detail.swift"; sourceTree = "<group>"; };
 		8480C97129BE7FAF00EFA553 /* ForecastModel+TemperatureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastModel+TemperatureDetail.swift"; sourceTree = "<group>"; };
 		8480C97329BE800300EFA553 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		84B843F229C154F300A65394 /* AJDIContainer+registerFromDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJDIContainer+registerFromDomain.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B843F129C154CB00A65394 /* AJDependencyInjection in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +159,7 @@
 		8480C93A29BE514200EFA553 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
+				84B843F229C154F300A65394 /* AJDIContainer+registerFromDomain.swift */,
 			);
 			path = DependencyInjection;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			);
 			name = AJDomain;
 			packageProductDependencies = (
+				84B843F029C154CB00A65394 /* AJDependencyInjection */,
 			);
 			productName = AJDomain;
 			productReference = 8480C8DF29BDD96600EFA553 /* AJDomain.framework */;
@@ -304,6 +310,7 @@
 				8480C96329BE6EC700EFA553 /* CoordinateModel.swift in Sources */,
 				8477C27D29BEC4D5006992D0 /* GetWeatherByCityUseCaseType.swift in Sources */,
 				8480C97229BE7FAF00EFA553 /* ForecastModel+TemperatureDetail.swift in Sources */,
+				84B843F329C154F300A65394 /* AJDIContainer+registerFromDomain.swift in Sources */,
 				8477C28629BEDDC4006992D0 /* SchedulerDefault.swift in Sources */,
 				8480C96129BE6E9500EFA553 /* CityModel.swift in Sources */,
 				8480C97029BE7F2E00EFA553 /* ForecastModel+Detail.swift in Sources */,
@@ -584,6 +591,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84B843F029C154CB00A65394 /* AJDependencyInjection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AJDependencyInjection;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8480C8D629BDD96600EFA553 /* Project object */;
 }

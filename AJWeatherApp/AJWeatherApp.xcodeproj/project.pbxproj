@@ -10,6 +10,8 @@
 		8477C26929BEAB1B006992D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8477C26B29BEAB1B006992D0 /* Localizable.strings */; };
 		8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; };
 		8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84B843E929C1523600A65394 /* AJDIContainer+registerAllServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B843E829C1523600A65394 /* AJDIContainer+registerAllServices.swift */; };
+		84B843EB29C1525E00A65394 /* AJDependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EA29C1525E00A65394 /* AJDependencyInjection */; };
 		84D751B829BDD6B700A16AA1 /* AJWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D751B729BDD6B700A16AA1 /* AJWeatherApp.swift */; };
 		84D751BC29BDD6B800A16AA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D751BB29BDD6B800A16AA1 /* Assets.xcassets */; };
 		84D751BF29BDD6B800A16AA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D751BE29BDD6B800A16AA1 /* Preview Assets.xcassets */; };
@@ -56,6 +58,7 @@
 		8480C91A29BE4E5600EFA553 /* AJPresentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJPresentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480C91E29BE4E6100EFA553 /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480C92129BE4E7100EFA553 /* AJDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B843E829C1523600A65394 /* AJDIContainer+registerAllServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJDIContainer+registerAllServices.swift"; sourceTree = "<group>"; };
 		84D751B429BDD6B700A16AA1 /* AJWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D751B729BDD6B700A16AA1 /* AJWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJWeatherApp.swift; sourceTree = "<group>"; };
 		84D751BB29BDD6B800A16AA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B843EB29C1525E00A65394 /* AJDependencyInjection in Frameworks */,
 				8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +120,7 @@
 		8480C93C29BE515000EFA553 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
+				84B843E829C1523600A65394 /* AJDIContainer+registerAllServices.swift */,
 			);
 			path = DependencyInjection;
 			sourceTree = "<group>";
@@ -133,8 +138,8 @@
 				84D751B629BDD6B700A16AA1 /* AJWeather */,
 				84D751C729BDD6B900A16AA1 /* AJWeatherTests */,
 				84D751D129BDD6B900A16AA1 /* AJWeatherUITests */,
-				84D751B529BDD6B700A16AA1 /* Products */,
 				8480C91929BE4E5600EFA553 /* Frameworks */,
+				84D751B529BDD6B700A16AA1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,11 +156,11 @@
 		84D751B629BDD6B700A16AA1 /* AJWeather */ = {
 			isa = PBXGroup;
 			children = (
-				8477C26829BEAAF7006992D0 /* Resources */,
+				84D751B729BDD6B700A16AA1 /* AJWeatherApp.swift */,
 				8480C94029BE51AA00EFA553 /* Coordinators */,
 				8480C93C29BE515000EFA553 /* DependencyInjection */,
-				84D751B729BDD6B700A16AA1 /* AJWeatherApp.swift */,
 				84D751BD29BDD6B800A16AA1 /* Preview Content */,
+				8477C26829BEAAF7006992D0 /* Resources */,
 			);
 			path = AJWeather;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			);
 			name = AJWeatherApp;
 			packageProductDependencies = (
+				84B843EA29C1525E00A65394 /* AJDependencyInjection */,
 			);
 			productName = AJWeather;
 			productReference = 84D751B429BDD6B700A16AA1 /* AJWeatherApp.app */;
@@ -321,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D751B829BDD6B700A16AA1 /* AJWeatherApp.swift in Sources */,
+				84B843E929C1523600A65394 /* AJDIContainer+registerAllServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +672,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84B843EA29C1525E00A65394 /* AJDependencyInjection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AJDependencyInjection;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84D751AC29BDD6B700A16AA1 /* Project object */;
 }
