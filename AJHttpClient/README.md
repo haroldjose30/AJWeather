@@ -12,4 +12,5 @@ This package is responsible to create a wrapper to do HttpRequest with Combine
 
 - [ ] Import all HttpStatusCode from https://github.com/ollieatkinson/HTTPStatusCode/blob/master/HTTPStatus/HTTPStatusCodes.swift
 - [ ] Add Unit Test for https://api.openweathermap.org/data/2.5/weather?q=aveiro,pt&APPID=1167bb2c2809b587df555190804f6916
+- [ ] Improve using protocol oriented https://www.userdesk.io/blog/protocol-oriented-networking-using-url-session-with-swift/
 

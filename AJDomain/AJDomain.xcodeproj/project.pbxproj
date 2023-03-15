@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		8416BFA629C1D8C700D2CACF /* SpyForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416BFA529C1D8C700D2CACF /* SpyForecastRepository.swift */; };
 		8416BFA929C1D90F00D2CACF /* ForecastDTO+fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416BFA829C1D90F00D2CACF /* ForecastDTO+fixture.swift */; };
-		8416BFB529C2104600D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F029C154CB00A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		8416BFB729C2104800D2CACF /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B843F829C15D9100A65394 /* AJData.framework */; };
-		8416BFB829C2104800D2CACF /* AJData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B843F829C15D9100A65394 /* AJData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFD029C221B400D2CACF /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B843F829C15D9100A65394 /* AJData.framework */; };
+		8416BFD129C221B400D2CACF /* AJData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B843F829C15D9100A65394 /* AJData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFD329C221B600D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F029C154CB00A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8477C27A29BEC4A4006992D0 /* GetForecastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C27929BEC4A4006992D0 /* GetForecastUseCase.swift */; };
 		8477C27D29BEC4D5006992D0 /* GetForecastUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C27C29BEC4D5006992D0 /* GetForecastUseCaseType.swift */; };
 		8477C28429BEDD8F006992D0 /* SchedulerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C28329BEDD8F006992D0 /* SchedulerType.swift */; };
@@ -41,14 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8416BFB629C2104600D2CACF /* Embed Frameworks */ = {
+		8416BFD229C221B400D2CACF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8416BFB529C2104600D2CACF /* AJDependencyInjection in Embed Frameworks */,
-				8416BFB829C2104800D2CACF /* AJData.framework in Embed Frameworks */,
+				8416BFD329C221B600D2CACF /* AJDependencyInjection in Embed Frameworks */,
+				8416BFD129C221B400D2CACF /* AJData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B843F129C154CB00A65394 /* AJDependencyInjection in Frameworks */,
-				8416BFB729C2104800D2CACF /* AJData.framework in Frameworks */,
+				8416BFD029C221B400D2CACF /* AJData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +267,7 @@
 				8480C8DB29BDD96600EFA553 /* Sources */,
 				8480C8DC29BDD96600EFA553 /* Frameworks */,
 				8480C8DD29BDD96600EFA553 /* Resources */,
-				8416BFB629C2104600D2CACF /* Embed Frameworks */,
+				8416BFD229C221B400D2CACF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

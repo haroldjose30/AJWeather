@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8416BFB229C2103700D2CACF /* AJHttpClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B8440429C1629F00A65394 /* AJHttpClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		8416BFB429C2104000D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F429C1554200A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8416BFCE29C221AF00D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F429C1554200A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8416BFCF29C221B000D2CACF /* AJHttpClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B8440429C1629F00A65394 /* AJHttpClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		84553B7429C2663900AB00C6 /* CoreDataPersistenceDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84553B7229C2663900AB00C6 /* CoreDataPersistenceDataBase.swift */; };
+		84553B7929C2681000AB00C6 /* AJWeatherModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84553B7729C2681000AB00C6 /* AJWeatherModel.xcdatamodeld */; };
 		8480C90A29BDD98F00EFA553 /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480C90129BDD98E00EFA553 /* AJData.framework */; };
 		8480C90F29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C90E29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift */; };
 		8480C91029BDD98F00EFA553 /* AJData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8480C90429BDD98E00EFA553 /* AJData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,8 +46,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8416BFB429C2104000D2CACF /* AJDependencyInjection in Embed Frameworks */,
-				8416BFB229C2103700D2CACF /* AJHttpClient in Embed Frameworks */,
+				8416BFCF29C221B000D2CACF /* AJHttpClient in Embed Frameworks */,
+				8416BFCE29C221AF00D2CACF /* AJDependencyInjection in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84553B7229C2663900AB00C6 /* CoreDataPersistenceDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceDataBase.swift; sourceTree = "<group>"; };
+		84553B7829C2681000AB00C6 /* AJWeatherModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AJWeatherModel.xcdatamodel; sourceTree = "<group>"; };
 		8480C90129BDD98E00EFA553 /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480C90429BDD98E00EFA553 /* AJData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJData.h; sourceTree = "<group>"; };
 		8480C90929BDD98F00EFA553 /* AJDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AJDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84553B7A29C26EFB00AB00C6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				84553B7229C2663900AB00C6 /* CoreDataPersistenceDataBase.swift */,
+				84553B7729C2681000AB00C6 /* AJWeatherModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		8480C8F729BDD98E00EFA553 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 		8480C94F29BE525500EFA553 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				84553B7A29C26EFB00AB00C6 /* CoreData */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -390,6 +404,8 @@
 				8489034C29C1867900991116 /* ForecastRepositoryType.swift in Sources */,
 				8489034A29C1865100991116 /* ForecastRepository.swift in Sources */,
 				8489034529C16E3E00991116 /* ForecastRemoteDataSourceType.swift in Sources */,
+				84553B7929C2681000AB00C6 /* AJWeatherModel.xcdatamodeld in Sources */,
+				84553B7429C2663900AB00C6 /* CoreDataPersistenceDataBase.swift in Sources */,
 				84B843F729C1555100A65394 /* AJDIContainer+registerFromData.swift in Sources */,
 				84B843FE29C15E9900A65394 /* ForecastRemoteDataSource.swift in Sources */,
 				8489035229C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift in Sources */,
@@ -681,6 +697,19 @@
 			productName = AJHttpClient;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		84553B7729C2681000AB00C6 /* AJWeatherModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84553B7829C2681000AB00C6 /* AJWeatherModel.xcdatamodel */,
+			);
+			currentVersion = 84553B7829C2681000AB00C6 /* AJWeatherModel.xcdatamodel */;
+			path = AJWeatherModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8480C8F829BDD98E00EFA553 /* Project object */;
 }

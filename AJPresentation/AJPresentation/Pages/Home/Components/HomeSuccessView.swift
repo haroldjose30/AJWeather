@@ -36,35 +36,43 @@ struct HomeSuccessView: View {
     private struct SectionListView: View {
         var hours: [HomeViewObject.HourViewObject]
         
-        @State var maxRows = 3
-        let incRow = 3
+        @State private var rowsShowed = 3
+        private let rowsIncrement = 3
         
         var body: some View {
-            ForEach(hours.prefix(maxRows), id: \.time) { hourDetail in
+            ForEach(hours.prefix(rowsShowed), id: \.time) { hourDetail in
                 HomeSuccessView.RowView(hour: hourDetail)
             }
-            if hours.count > maxRows {
-                ShowMoreRowView(
-                    info: "\(hours.count-maxRows)"
-                ) {
-                    maxRows += incRow
-                }
-            }
             
+            ShowMoreRowView(
+                rowsTotal: hours.count,
+                rowsShowed: rowsShowed
+            ) {
+                rowsShowed += rowsIncrement
+            }
         }
     }
     
     private struct ShowMoreRowView: View {
-        let info: String
+        
+        let rowsTotal: Int
+        let rowsShowed: Int
         let action: () -> Void
+        
         var body: some View {
-            HStack{
-                Spacer()
-                Button(action: action) {
-                    Text("show more \(info)")
+            
+            if rowsTotal > rowsShowed {
+                HStack{
+                    Spacer()
+                    Button(action: action) {
+                        Text("show more \(rowsTotal - rowsShowed)")
+                    }
+                    Spacer()
                 }
-                Spacer()
+            } else {
+                EmptyView()
             }
+            
         }
     }
     

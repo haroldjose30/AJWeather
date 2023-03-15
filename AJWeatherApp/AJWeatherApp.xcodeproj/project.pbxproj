@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		8416BFBD29C2106F00D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EA29C1525E00A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8416BFBF29C21E7300D2CACF /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFBE29C21E7300D2CACF /* AJData.framework */; };
+		8416BFC029C21E7300D2CACF /* AJData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFBE29C21E7300D2CACF /* AJData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFC229C21E7700D2CACF /* AJDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFC129C21E7700D2CACF /* AJDomain.framework */; };
+		8416BFC329C21E7700D2CACF /* AJDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFC129C21E7700D2CACF /* AJDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFC529C21E8900D2CACF /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFC429C21E8900D2CACF /* AJPresentation.framework */; };
+		8416BFC629C21E8900D2CACF /* AJPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8416BFC429C21E8900D2CACF /* AJPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFC829C21E9500D2CACF /* AJHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 8416BFC729C21E9500D2CACF /* AJHttpClient */; };
+		8416BFC929C21E9500D2CACF /* AJHttpClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8416BFC729C21E9500D2CACF /* AJHttpClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		84553B7629C2670100AB00C6 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84553B7529C2670100AB00C6 /* CoreDataTestView.swift */; };
 		8477C26929BEAB1B006992D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8477C26B29BEAB1B006992D0 /* Localizable.strings */; };
 		8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; };
 		8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,7 +55,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				8416BFBD29C2106F00D2CACF /* AJDependencyInjection in Embed Frameworks */,
+				8416BFC629C21E8900D2CACF /* AJPresentation.framework in Embed Frameworks */,
+				8416BFC329C21E7700D2CACF /* AJDomain.framework in Embed Frameworks */,
 				8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */,
+				8416BFC929C21E9500D2CACF /* AJHttpClient in Embed Frameworks */,
+				8416BFC029C21E7300D2CACF /* AJData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +69,10 @@
 /* Begin PBXFileReference section */
 		8416BFAA29C20C8E00D2CACF /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8416BFAD29C20C9200D2CACF /* AJDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416BFBE29C21E7300D2CACF /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416BFC129C21E7700D2CACF /* AJDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416BFC429C21E8900D2CACF /* AJPresentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJPresentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84553B7529C2670100AB00C6 /* CoreDataTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
 		8477C26A29BEAB1B006992D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8477C26C29BEAB6D006992D0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8477C26F29BEAF58006992D0 /* AJPresentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJPresentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +97,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B843EB29C1525E00A65394 /* AJDependencyInjection in Frameworks */,
+				8416BFC529C21E8900D2CACF /* AJPresentation.framework in Frameworks */,
+				8416BFC229C21E7700D2CACF /* AJDomain.framework in Frameworks */,
 				8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */,
+				8416BFC829C21E9500D2CACF /* AJHttpClient in Frameworks */,
+				8416BFBF29C21E7300D2CACF /* AJData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +134,9 @@
 		8480C91929BE4E5600EFA553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8416BFC429C21E8900D2CACF /* AJPresentation.framework */,
+				8416BFC129C21E7700D2CACF /* AJDomain.framework */,
+				8416BFBE29C21E7300D2CACF /* AJData.framework */,
 				8416BFAD29C20C9200D2CACF /* AJDomain.framework */,
 				8416BFAA29C20C8E00D2CACF /* AJData.framework */,
 				8477C26F29BEAF58006992D0 /* AJPresentation.framework */,
@@ -162,6 +186,7 @@
 		84D751B629BDD6B700A16AA1 /* AJWeather */ = {
 			isa = PBXGroup;
 			children = (
+				84553B7529C2670100AB00C6 /* CoreDataTestView.swift */,
 				84D751B729BDD6B700A16AA1 /* AJWeatherApp.swift */,
 				8480C94029BE51AA00EFA553 /* Coordinators */,
 				8480C93C29BE515000EFA553 /* DependencyInjection */,
@@ -215,6 +240,7 @@
 			name = AJWeatherApp;
 			packageProductDependencies = (
 				84B843EA29C1525E00A65394 /* AJDependencyInjection */,
+				8416BFC729C21E9500D2CACF /* AJHttpClient */,
 			);
 			productName = AJWeather;
 			productReference = 84D751B429BDD6B700A16AA1 /* AJWeatherApp.app */;
@@ -334,6 +360,7 @@
 			files = (
 				84D751B829BDD6B700A16AA1 /* AJWeatherApp.swift in Sources */,
 				84B843E929C1523600A65394 /* AJDIContainer+registerAllServices.swift in Sources */,
+				84553B7629C2670100AB00C6 /* CoreDataTestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +707,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8416BFC729C21E9500D2CACF /* AJHttpClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AJHttpClient;
+		};
 		84B843EA29C1525E00A65394 /* AJDependencyInjection */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AJDependencyInjection;
