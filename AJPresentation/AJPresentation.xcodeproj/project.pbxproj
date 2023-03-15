@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416BFB929C2104B00D2CACF /* AJDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; };
+		8416BFBA29C2104B00D2CACF /* AJDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8416BFBC29C2104D00D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EC29C1533700A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8477C26529BEA346006992D0 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C26429BEA346006992D0 /* ImageView.swift */; };
 		8477C26E29BEAE0B006992D0 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C26D29BEAE0B006992D0 /* Localizable.swift */; };
 		8477C27629BEB90C006992D0 /* SuccessView+RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C27529BEB90C006992D0 /* SuccessView+RowView.swift */; };
 		8477C27829BEBA1C006992D0 /* SuccessView+SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C27729BEBA1C006992D0 /* SuccessView+SectionView.swift */; };
 		8477C28129BEC825006992D0 /* ViewStateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C28029BEC825006992D0 /* ViewStateBase.swift */; };
-		8477C28E29BEE2EA006992D0 /* AJDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; };
-		8477C28F29BEE2EA006992D0 /* AJDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8477C29429BEE69D006992D0 /* ForecastModel+mapToHomeViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C29329BEE69D006992D0 /* ForecastModel+mapToHomeViewObject.swift */; };
 		8477C29629BEEF6E006992D0 /* HomePage+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477C29529BEEF6E006992D0 /* HomePage+Preview.swift */; };
 		8480C8C629BDD91600EFA553 /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480C8BD29BDD91600EFA553 /* AJPresentation.framework */; };
@@ -40,13 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8477C29029BEE2EA006992D0 /* Embed Frameworks */ = {
+		8416BFBB29C2104C00D2CACF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8477C28F29BEE2EA006992D0 /* AJDomain.framework in Embed Frameworks */,
+				8416BFBC29C2104D00D2CACF /* AJDependencyInjection in Embed Frameworks */,
+				8416BFBA29C2104B00D2CACF /* AJDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,7 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B843ED29C1533700A65394 /* AJDependencyInjection in Frameworks */,
-				8477C28E29BEE2EA006992D0 /* AJDomain.framework in Frameworks */,
+				8416BFB929C2104B00D2CACF /* AJDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +289,7 @@
 				8480C8B929BDD91600EFA553 /* Sources */,
 				8480C8BA29BDD91600EFA553 /* Frameworks */,
 				8480C8BB29BDD91600EFA553 /* Resources */,
-				8477C29029BEE2EA006992D0 /* Embed Frameworks */,
+				8416BFBB29C2104C00D2CACF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

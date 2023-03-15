@@ -16,7 +16,7 @@ struct GetMessageRequestMocky: AJHttpRequestGetJson {
     
     init(path: String) {
         self.headers = ["Content-Type": "application/json"]
-        self.urlBase = MockyAPI.baseUrl
+        self.urlBase = MockyEndpoint.baseUrl
         self.path = path
     }
 }

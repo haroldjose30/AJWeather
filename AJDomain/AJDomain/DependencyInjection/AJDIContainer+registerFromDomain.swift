@@ -6,6 +6,7 @@
 //
 
 import AJDependencyInjection
+import AJData
 
 public extension AJDIContainer {
     
@@ -15,8 +16,9 @@ public extension AJDIContainer {
             SchedulerDefault()
         }
         
-        self.register(type: GetWeatherByCityUseCaseType.self) { container in
-            GetWeatherByCityUseCase(
+        self.register(type: GetForecastUseCaseType.self) { container in
+            GetForecastUseCase(
+                repository: try container.resolve(type: ForecastRepositoryType.self),
                 scheduler: try container.resolve(type: SchedulerType.self)
             )
         }

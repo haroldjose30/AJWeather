@@ -9,17 +9,13 @@ import Foundation
 
 class AJHttpLogger {
     
-    static var enabled: Bool = false
+    static var enabled: Bool = true
     
-    private init() {
-#if DEBUG
-        AJHttpLogger.enabled = true
-#endif
-    }
+    private init() {}
     
-    static func print(_ message: String) {
+    static func print(_ items: Any...) {
         if AJHttpLogger.enabled {
-            Swift.print(message)
+            Swift.print("AJHttpLogger:",items)
         }
     }
 }

@@ -5,6 +5,6 @@
 //  Created by Jose Harold on 13/03/2023.
 //
 
-protocol AJHttpRequestGetJson: AJHttpRequestGet {
+public protocol AJHttpRequestGetJson: AJHttpRequestGet {
     associatedtype ResponseType: Decodable
 }

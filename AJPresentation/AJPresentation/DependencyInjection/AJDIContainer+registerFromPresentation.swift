@@ -14,7 +14,7 @@ public extension AJDIContainer {
         
         self.register(type: HomeViewModel.self) { container in
             HomeViewModel(
-                getWeatherByCityUseCase: try container.resolve(type: GetWeatherByCityUseCaseType.self)
+                getWeatherByCityUseCase: try container.resolve(type: GetForecastUseCaseType.self)
             )
         }
     }

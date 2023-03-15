@@ -37,7 +37,7 @@ extension AJHttpResponse {
                     throw AJHttpError.unknown
                 }
                 
-                print("ApiClient.statusCode: \(httpResponse.statusCode)")
+                AJHttpLogger.print("statusCode: \(httpResponse.statusCode)")
                 guard 200..<300 ~= httpResponse.statusCode else {
                     AJHttpLogger.print("response: \(String(data: data, encoding: .utf8) ?? "nil or error")")
                     throw self.mapToHttpError(with: httpResponse.statusCode)
@@ -57,7 +57,6 @@ extension AJHttpResponse {
             .eraseToAnyPublisher()
     }
     
-    //TODO: create a map to all status code
     private func mapToHttpError(
         with code: Int
     ) -> AJHttpError {

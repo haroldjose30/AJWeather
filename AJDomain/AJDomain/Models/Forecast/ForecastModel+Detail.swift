@@ -1,5 +1,5 @@
 //
-//  Detail.swift
+//  ForecastDetailModel.swift
 //  AJDomain
 //
 //  Created by Jose Harold on 12/03/2023.
@@ -7,18 +7,17 @@
 
 public extension ForecastModel {
     
-    struct Detail {
+    struct ForecastDetailModel {
         
-        public let date: Date
-        /// Time of data forecasted, ISO, UTC
+        public let date: Double
         public let dateTxt: String
-        public let main: ForecastModel.TemperatureDetail
+        public let main: TemperatureDetailModel
         public let weather: [WeatherModel]
         
         public init(
-            date: Date,
+            date: Double,
             dateTxt: String,
-            main: ForecastModel.TemperatureDetail,
+            main: TemperatureDetailModel,
             weather: [WeatherModel]
         ) {
             self.date = date

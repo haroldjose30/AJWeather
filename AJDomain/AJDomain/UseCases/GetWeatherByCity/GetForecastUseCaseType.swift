@@ -1,5 +1,5 @@
 //
-//  GetWeatherByCityUseCaseType.swift
+//  GetForecastUseCaseType.swift
 //  AJDomain
 //
 //  Created by Jose Harold on 13/03/2023.
@@ -7,10 +7,10 @@
 
 import Combine
 
-public protocol GetWeatherByCityUseCaseType {
+public protocol GetForecastUseCaseType {
     
     func execute(
-        city: String,
-        country: String
+        latitude: Double,
+        longitude: Double
     ) -> AnyPublisher<ForecastModel, Error>
 }

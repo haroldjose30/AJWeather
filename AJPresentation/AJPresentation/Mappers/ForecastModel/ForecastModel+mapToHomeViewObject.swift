@@ -11,47 +11,54 @@ extension ForecastModel {
     
     func mapToHomeViewObject() -> HomeViewObject {
         
-        
         var dates: [HomeViewObject.DateViewObject] = []
-
-        self.list.forEach { detail in
-
-            let date = getFormatedDate(detail.date)
-            let time = getFormatedTime(detail.date)
-            
-            var dateViewObject: HomeViewObject.DateViewObject? = dates.first(where: { $0.date == date})
-            if dateViewObject == nil {
+        self.list
+            .sorted(by: {$0.date < $1.date})
+            .forEach { detail in
                 
-                dateViewObject =  HomeViewObject.DateViewObject(
-                    date: date,
-                    hours: []
-                )
-                if let dateViewObject {
-                    dates.append(dateViewObject)
+                let date = getDateFromUnix(detail.date)
+                let dateFormatted = getFormattedDate(date)
+                let time = getFormattedTime(date)
+                
+                var dateViewObject: HomeViewObject.DateViewObject? = dates.first(where: { $0.date == dateFormatted})
+                if dateViewObject == nil {
+                    
+                    dateViewObject =  HomeViewObject.DateViewObject(
+                        date: dateFormatted,
+                        hours: []
+                    )
+                    if let dateViewObject {
+                        dates.append(dateViewObject)
+                    }
+                }
+                
+                if !(dateViewObject?.hours.contains(where: {$0.time == time}) ?? false) {
+                    
+                    dateViewObject?.hours.append(
+                        HomeViewObject.HourViewObject(
+                            time: time,
+                            temperature: "\(detail.main.temp) °C",
+                            iconUrl: getIconUrl(detail.weather.first?.icon),
+                            description: detail.weather.first?.description ?? ""
+                        )
+                    )
                 }
             }
-            
-            if !(dateViewObject?.hours.contains(where: {$0.time == time}) ?? false) {
-                
-                dateViewObject?.hours.append(
-                    HomeViewObject.HourViewObject(
-                        time: time,
-                        temperature: "\(detail.main.temperature) °C",
-                        iconUrl: getIconUrl(detail.weather.first?.icon),
-                        description: detail.weather.first?.description ?? ""
-                    )
-                )
-            }
-        }
-
+        
         return HomeViewObject(
-            title: self.city.name,
+            title: "\(self.city.name),\(self.city.country)",
             dates: dates
         )
     }
+}
+
+private extension ForecastModel {
     
+    func getDateFromUnix(_ dateInt: Double) -> Date {
+        Date(timeIntervalSince1970: dateInt)
+    }
     
-    private func getFormatedDate(_ date: Date) -> String {
+    func getFormattedDate(_ date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM dd"
@@ -69,14 +76,14 @@ extension ForecastModel {
         }
     }
     
-    private func getFormatedTime(_ date: Date) -> String {
+    func getFormattedTime(_ date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date)
     }
     
-    private func getIconUrl(_ icon: String?) -> String {
+    func getIconUrl(_ icon: String?) -> String {
         guard let icon = icon else  {
             return ""
         }

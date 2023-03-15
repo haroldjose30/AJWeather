@@ -8,11 +8,11 @@
 public struct ForecastModel {
     
     public let city: CityModel
-    public let list: [ForecastModel.Detail]
+    public let list: [ForecastDetailModel]
     
     public init(
         city: CityModel,
-        list: [ForecastModel.Detail]
+        list: [ForecastDetailModel]
     ) {
         self.city = city
         self.list = list

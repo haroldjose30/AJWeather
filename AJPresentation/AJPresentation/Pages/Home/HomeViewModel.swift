@@ -17,14 +17,13 @@ public protocol HomeViewModelType: ObservableObject {
 public class HomeViewModel: HomeViewModelType,ObservableObject {
     
     @Published public var viewState: ViewStateBase<HomeViewObject> = .idle
-    private let getWeatherByCityUseCase: GetWeatherByCityUseCaseType
+    private let getWeatherByCityUseCase: GetForecastUseCaseType
     private var cancellables: Set<AnyCancellable> = []
-    private let city: String = "Aveiro"
-    private let country: String = "PT"
-    
+    private let latitude: Double = 40.64
+    private let longitude: Double = -8.64
     
     public init(
-        getWeatherByCityUseCase: GetWeatherByCityUseCaseType
+        getWeatherByCityUseCase: GetForecastUseCaseType
     ) {
         self.getWeatherByCityUseCase = getWeatherByCityUseCase
     }
@@ -34,25 +33,23 @@ public class HomeViewModel: HomeViewModelType,ObservableObject {
         
         getWeatherByCityUseCase
             .execute(
-                city: city,
-                country: country
+                latitude: latitude,
+                longitude: longitude
             )
             .sink(
                 receiveCompletion: {  [weak self] completion in
                     switch completion {
-                    case .finished: do {}
-                    case .failure: do {
-                        
+                    case .finished:
+                        break
+                    case .failure:
                         self?.viewState = .failed(
                             action: { [weak self] in
                                 self?.loadData()
                             }
                         )
                     }
-                    }
                 },
                 receiveValue: {  [weak self] forecastModel in
-                    
                     
                     let homeViewObject = forecastModel.mapToHomeViewObject()
                     

@@ -7,13 +7,13 @@
 
 import Foundation
 
-typealias AJHttpQueryParameters = [String: String]
+public typealias AJHttpQueryParameters = [String: String]
 
-protocol AJHttpRequestGet: AJHttpRequest {
+public protocol AJHttpRequestGet: AJHttpRequest {
     var queryParameters: AJHttpQueryParameters { get }
 }
 
-extension AJHttpRequestGet {
+public extension AJHttpRequestGet {
     var method: AJHttpMethod { return .get  }
     var urlRequest: URLRequest? {
         

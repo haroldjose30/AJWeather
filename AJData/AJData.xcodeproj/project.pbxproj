@@ -7,11 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416BFB229C2103700D2CACF /* AJHttpClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B8440429C1629F00A65394 /* AJHttpClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8416BFB429C2104000D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F429C1554200A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8480C90A29BDD98F00EFA553 /* AJData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480C90129BDD98E00EFA553 /* AJData.framework */; };
-		8480C90F29BDD98F00EFA553 /* AJDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C90E29BDD98F00EFA553 /* AJDataTests.swift */; };
+		8480C90F29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480C90E29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift */; };
 		8480C91029BDD98F00EFA553 /* AJData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8480C90429BDD98E00EFA553 /* AJData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8489034329C16E1200991116 /* ForecastResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489034229C16E1200991116 /* ForecastResponseDTO.swift */; };
+		8489034529C16E3E00991116 /* ForecastRemoteDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489034429C16E3E00991116 /* ForecastRemoteDataSourceType.swift */; };
+		8489034A29C1865100991116 /* ForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489034929C1865100991116 /* ForecastRepository.swift */; };
+		8489034C29C1867900991116 /* ForecastRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489034B29C1867900991116 /* ForecastRepositoryType.swift */; };
+		8489034E29C186D200991116 /* ForecastDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489034D29C186D200991116 /* ForecastDTO.swift */; };
+		8489035229C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489035129C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift */; };
+		8489035629C192E200991116 /* ForecastRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489035529C192E200991116 /* ForecastRepositoryTests.swift */; };
 		84B843F529C1554200A65394 /* AJDependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 84B843F429C1554200A65394 /* AJDependencyInjection */; };
 		84B843F729C1555100A65394 /* AJDIContainer+registerFromData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B843F629C1555100A65394 /* AJDIContainer+registerFromData.swift */; };
+		84B843FE29C15E9900A65394 /* ForecastRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B843FD29C15E9900A65394 /* ForecastRemoteDataSource.swift */; };
+		84B8440129C15F1800A65394 /* GetForecastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8440029C15F1800A65394 /* GetForecastRequest.swift */; };
+		84B8440329C15FCC00A65394 /* OpenWeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8440229C15FCC00A65394 /* OpenWeatherEndpoint.swift */; };
+		84B8440529C1629F00A65394 /* AJHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 84B8440429C1629F00A65394 /* AJHttpClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,12 +37,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8416BFB329C2103700D2CACF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8416BFB429C2104000D2CACF /* AJDependencyInjection in Embed Frameworks */,
+				8416BFB229C2103700D2CACF /* AJHttpClient in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8480C90129BDD98E00EFA553 /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480C90429BDD98E00EFA553 /* AJData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJData.h; sourceTree = "<group>"; };
 		8480C90929BDD98F00EFA553 /* AJDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AJDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8480C90E29BDD98F00EFA553 /* AJDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJDataTests.swift; sourceTree = "<group>"; };
+		8480C90E29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRemoteDataSourceTests.swift; sourceTree = "<group>"; };
+		8489034229C16E1200991116 /* ForecastResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponseDTO.swift; sourceTree = "<group>"; };
+		8489034429C16E3E00991116 /* ForecastRemoteDataSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRemoteDataSourceType.swift; sourceTree = "<group>"; };
+		8489034929C1865100991116 /* ForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepository.swift; sourceTree = "<group>"; };
+		8489034B29C1867900991116 /* ForecastRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryType.swift; sourceTree = "<group>"; };
+		8489034D29C186D200991116 /* ForecastDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDTO.swift; sourceTree = "<group>"; };
+		8489035129C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastResponseDTO+maptoForecastDTO.swift"; sourceTree = "<group>"; };
+		8489035529C192E200991116 /* ForecastRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryTests.swift; sourceTree = "<group>"; };
 		84B843F629C1555100A65394 /* AJDIContainer+registerFromData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJDIContainer+registerFromData.swift"; sourceTree = "<group>"; };
+		84B843FD29C15E9900A65394 /* ForecastRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRemoteDataSource.swift; sourceTree = "<group>"; };
+		84B8440029C15F1800A65394 /* GetForecastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetForecastRequest.swift; sourceTree = "<group>"; };
+		84B8440229C15FCC00A65394 /* OpenWeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B8440529C1629F00A65394 /* AJHttpClient in Frameworks */,
 				84B843F529C1554200A65394 /* AJDependencyInjection in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,8 +96,8 @@
 			children = (
 				8480C90329BDD98E00EFA553 /* AJData */,
 				8480C90D29BDD98F00EFA553 /* AJDataTests */,
-				8480C90229BDD98E00EFA553 /* Products */,
 				8480C92E29BE4F5100EFA553 /* Frameworks */,
+				8480C90229BDD98E00EFA553 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,11 +113,11 @@
 		8480C90329BDD98E00EFA553 /* AJData */ = {
 			isa = PBXGroup;
 			children = (
-				8480C94C29BE524300EFA553 /* DTO */,
-				8480C94D29BE524C00EFA553 /* DataSource */,
-				8480C94B29BE523D00EFA553 /* Repositories */,
-				8480C93B29BE514900EFA553 /* DependencyInjection */,
 				8480C90429BDD98E00EFA553 /* AJData.h */,
+				8480C94D29BE524C00EFA553 /* DataSources */,
+				8480C93B29BE514900EFA553 /* DependencyInjection */,
+				8489035029C1899D00991116 /* Mappers */,
+				8480C94B29BE523D00EFA553 /* Repositories */,
 			);
 			path = AJData;
 			sourceTree = "<group>";
@@ -86,7 +125,8 @@
 		8480C90D29BDD98F00EFA553 /* AJDataTests */ = {
 			isa = PBXGroup;
 			children = (
-				8480C90E29BDD98F00EFA553 /* AJDataTests.swift */,
+				8489035329C1925A00991116 /* Repositories */,
+				8489034629C179E500991116 /* DataSources */,
 			);
 			path = AJDataTests;
 			sourceTree = "<group>";
@@ -109,6 +149,8 @@
 		8480C94B29BE523D00EFA553 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				8480C94C29BE524300EFA553 /* DTO */,
+				8489034F29C1873900991116 /* Forecast */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -116,22 +158,25 @@
 		8480C94C29BE524300EFA553 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				8489034D29C186D200991116 /* ForecastDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
 		};
-		8480C94D29BE524C00EFA553 /* DataSource */ = {
+		8480C94D29BE524C00EFA553 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
 				8480C94F29BE525500EFA553 /* Local */,
 				8480C94E29BE525100EFA553 /* Remote */,
 			);
-			path = DataSource;
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		8480C94E29BE525100EFA553 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				84B843FC29C15E7C00A65394 /* Forecast */,
+				84B8440229C15FCC00A65394 /* OpenWeatherEndpoint.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -141,6 +186,90 @@
 			children = (
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		8489034129C16DF100991116 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				8489034229C16E1200991116 /* ForecastResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		8489034629C179E500991116 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				8489034729C17A1100991116 /* Remote */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		8489034729C17A1100991116 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				8489034829C17A1800991116 /* Forecast */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		8489034829C17A1800991116 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				8480C90E29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		8489034F29C1873900991116 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				8489034929C1865100991116 /* ForecastRepository.swift */,
+				8489034B29C1867900991116 /* ForecastRepositoryType.swift */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		8489035029C1899D00991116 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				8489035129C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		8489035329C1925A00991116 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				8489035429C192B000991116 /* Forecast */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		8489035429C192B000991116 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				8489035529C192E200991116 /* ForecastRepositoryTests.swift */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		84B843FC29C15E7C00A65394 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				8489034129C16DF100991116 /* Response */,
+				84B843FF29C15F0300A65394 /* Requests */,
+				84B843FD29C15E9900A65394 /* ForecastRemoteDataSource.swift */,
+				8489034429C16E3E00991116 /* ForecastRemoteDataSourceType.swift */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		84B843FF29C15F0300A65394 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				84B8440029C15F1800A65394 /* GetForecastRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +294,7 @@
 				8480C8FD29BDD98E00EFA553 /* Sources */,
 				8480C8FE29BDD98E00EFA553 /* Frameworks */,
 				8480C8FF29BDD98E00EFA553 /* Resources */,
+				8416BFB329C2103700D2CACF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +303,7 @@
 			name = AJData;
 			packageProductDependencies = (
 				84B843F429C1554200A65394 /* AJDependencyInjection */,
+				84B8440429C1629F00A65394 /* AJHttpClient */,
 			);
 			productName = AJData;
 			productReference = 8480C90129BDD98E00EFA553 /* AJData.framework */;
@@ -256,7 +387,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8489034C29C1867900991116 /* ForecastRepositoryType.swift in Sources */,
+				8489034A29C1865100991116 /* ForecastRepository.swift in Sources */,
+				8489034529C16E3E00991116 /* ForecastRemoteDataSourceType.swift in Sources */,
 				84B843F729C1555100A65394 /* AJDIContainer+registerFromData.swift in Sources */,
+				84B843FE29C15E9900A65394 /* ForecastRemoteDataSource.swift in Sources */,
+				8489035229C189C200991116 /* ForecastResponseDTO+maptoForecastDTO.swift in Sources */,
+				84B8440129C15F1800A65394 /* GetForecastRequest.swift in Sources */,
+				8489034E29C186D200991116 /* ForecastDTO.swift in Sources */,
+				84B8440329C15FCC00A65394 /* OpenWeatherEndpoint.swift in Sources */,
+				8489034329C16E1200991116 /* ForecastResponseDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +404,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8480C90F29BDD98F00EFA553 /* AJDataTests.swift in Sources */,
+				8489035629C192E200991116 /* ForecastRepositoryTests.swift in Sources */,
+				8480C90F29BDD98F00EFA553 /* ForecastRemoteDataSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +675,10 @@
 		84B843F429C1554200A65394 /* AJDependencyInjection */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AJDependencyInjection;
+		};
+		84B8440429C1629F00A65394 /* AJHttpClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AJHttpClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

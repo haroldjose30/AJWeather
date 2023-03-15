@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416BFBD29C2106F00D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EA29C1525E00A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8477C26929BEAB1B006992D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8477C26B29BEAB1B006992D0 /* Localizable.strings */; };
 		8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; };
 		8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -44,6 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8416BFBD29C2106F00D2CACF /* AJDependencyInjection in Embed Frameworks */,
 				8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -52,6 +54,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8416BFAA29C20C8E00D2CACF /* AJData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8416BFAD29C20C9200D2CACF /* AJDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8477C26A29BEAB1B006992D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8477C26C29BEAB6D006992D0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8477C26F29BEAF58006992D0 /* AJPresentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJPresentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,8 @@
 		8480C91929BE4E5600EFA553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8416BFAD29C20C9200D2CACF /* AJDomain.framework */,
+				8416BFAA29C20C8E00D2CACF /* AJData.framework */,
 				8477C26F29BEAF58006992D0 /* AJPresentation.framework */,
 				8480C92129BE4E7100EFA553 /* AJDomain.framework */,
 				8480C91E29BE4E6100EFA553 /* AJData.framework */,

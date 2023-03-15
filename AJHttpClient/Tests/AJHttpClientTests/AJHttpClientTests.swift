@@ -6,16 +6,18 @@ final class AJHttpClientTests: XCTestCase {
     
     private let timeout:Double = 5
     private var httpClient: AJHttpClientType!
-    private var cancellables: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable>!
     
     
     override func setUpWithError() throws {
-        
+        cancellables = []
         httpClient = AJHttpClient()
     }
     
     override func tearDownWithError() throws {
         httpClient = nil
+        cancellables.removeAll()
+        cancellables = nil
     }
     
     func test_send_HttpGet_WhenStatusCodeIs200_ShouldReturnSerializedObjectWithValue() throws {
@@ -23,19 +25,20 @@ final class AJHttpClientTests: XCTestCase {
         //arrange
         let expectation = self.expectation(description: #function)
         let request = GetMessageRequestMocky(
-            path: MockyAPI.statuCode200AndReturnMessage
+            path: MockyEndpoint.statuCode200AndReturnMessage
         )
         
         //act
         self.httpClient.send(request)
-            .toJson()
+            .asJson()
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
-                        case .finished: do {}
-                        case .failure(let error): do {
-                            XCTFail(error.localizedDescription)
-                        }
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                        
                     }
                     expectation.fulfill()
                 },
@@ -54,20 +57,20 @@ final class AJHttpClientTests: XCTestCase {
         //arrange
         let expectation = self.expectation(description: #function)
         let request = GetMessageRequestMocky(
-            path: MockyAPI.statuCode400BadRequest
+            path: MockyEndpoint.statuCode400BadRequest
         )
         
         //act
         self.httpClient.send(request)
-            .toJson()
+            .asJson()
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
-                        case .finished: do {}
-                        case .failure(let error): do {
-                            //assert
-                            XCTAssertEqual(error, AJHttpError.badRequest)
-                        }
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        //assert
+                        XCTAssertEqual(error, AJHttpError.badRequest)
                     }
                     expectation.fulfill()
                 },

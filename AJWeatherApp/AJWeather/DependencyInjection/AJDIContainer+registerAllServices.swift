@@ -12,6 +12,7 @@ public extension AJDIContainer {
     func registerAllServices() {
         
         registerFromPresentation()
-        registerFromDomain()        
+        registerFromDomain()
+        registerFromData()
     }
 }

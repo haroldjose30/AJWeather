@@ -7,23 +7,23 @@
 
 public extension ForecastModel {
     
-    struct TemperatureDetail {
+    struct TemperatureDetailModel {
         
-        public let temperature: Double
+        public let temp: Double
         public let feelsLike: Double
         public let tempMin: Double
         public let tempMax: Double
         public let humidity: Int
         
         public init(
-            temperature: Double,
+            temp: Double,
             feelsLike: Double,
             tempMin: Double,
             tempMax: Double,
             humidity: Int
         ) {
             
-            self.temperature = temperature
+            self.temp = temp
             self.feelsLike = feelsLike
             self.tempMin = tempMin
             self.tempMax = tempMax
