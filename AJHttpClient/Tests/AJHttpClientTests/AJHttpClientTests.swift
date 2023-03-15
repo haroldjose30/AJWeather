@@ -8,16 +8,15 @@ final class AJHttpClientTests: XCTestCase {
     private var httpClient: AJHttpClientType!
     private var cancellables: Set<AnyCancellable> = []
     
-    override func setUp() async throws {
+    
+    override func setUpWithError() throws {
         
         httpClient = AJHttpClient()
     }
     
-    override func tearDown() async throws {
-        
+    override func tearDownWithError() throws {
         httpClient = nil
     }
-    
     
     func test_send_HttpGet_WhenStatusCodeIs200_ShouldReturnSerializedObjectWithValue() throws {
         

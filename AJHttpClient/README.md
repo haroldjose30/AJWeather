@@ -4,7 +4,8 @@ This package is responsible to create a wrapper to do HttpRequest with Combine
 
 
 ### TODO:
-- [ ] Implement Http Get
+- [X] Implement Http Get
+- [X] Integration test for Http Get
 - [ ] Implement Http Post
 - [ ] Implement Http Put
 - [ ] Implement Http Delete
