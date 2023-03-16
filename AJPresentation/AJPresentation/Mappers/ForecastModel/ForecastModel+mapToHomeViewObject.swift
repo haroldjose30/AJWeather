@@ -54,8 +54,8 @@ extension ForecastModel {
 
 private extension ForecastModel {
     
-    func getDateFromUnix(_ dateInt: Double) -> Date {
-        Date(timeIntervalSince1970: dateInt)
+    func getDateFromUnix(_ dateInt: Int) -> Date {
+        Date(timeIntervalSince1970: Double(dateInt))
     }
     
     func getFormattedDate(_ date: Date) -> String {

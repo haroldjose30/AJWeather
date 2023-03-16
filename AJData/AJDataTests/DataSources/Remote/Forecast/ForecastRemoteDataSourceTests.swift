@@ -12,7 +12,7 @@ import Combine
 
 final class ForecastRemoteDataSourceTests: XCTestCase {
     
-    private let timeout:Double = 5
+    private let timeout:Float = 5
     private var remoteDataSource: ForecastRemoteDataSourceType!
     //TODO: change to a spy or mock
     private var httpClient: AJHttpClientType!
@@ -40,8 +40,8 @@ final class ForecastRemoteDataSourceTests: XCTestCase {
         
         //arrange
         let expectation = self.expectation(description: #function)
-        let latitude: Double = 40.64
-        let longitude: Double = -8.64
+        let latitude: Float = 40.64
+        let longitude: Float = -8.64
         let cityExpected = "Aveiro"
         let cityIdExpected = 2742611
         

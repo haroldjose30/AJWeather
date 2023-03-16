@@ -14,9 +14,9 @@ extension ForecastResponseDTO {
             message: self.message,
             cnt: self.cnt,
             list: self.list.map({ forecastDetailResponseDTO in
-                ForecastDTO.ForecastDetailDTO(
+                ForecastDetailDTO(
                     dt: forecastDetailResponseDTO.dt,
-                    main: ForecastDTO.TemperatureDetailDTO(
+                    main: TemperatureDetailDTO(
                         temp: forecastDetailResponseDTO.main.temp,
                         feelsLike: forecastDetailResponseDTO.main.feelsLike,
                         tempMin: forecastDetailResponseDTO.main.tempMin,
@@ -24,7 +24,7 @@ extension ForecastResponseDTO {
                         humidity: forecastDetailResponseDTO.main.humidity
                     ),
                     weather: forecastDetailResponseDTO.weather.map({ weatherResponseDTO in
-                        ForecastDTO.WeatherDTO(
+                        WeatherDTO(
                             id: weatherResponseDTO.id,
                             main: weatherResponseDTO.main,
                             description: weatherResponseDTO.description,
@@ -34,12 +34,12 @@ extension ForecastResponseDTO {
                     dtTxt: forecastDetailResponseDTO.dtTxt
                 )
             }),
-            city: ForecastDTO.CityDTO(
+            city: CityDTO(
                 id: self.city.id,
                 name: self.city.name,
-                coord: ForecastDTO.CoordinateDTO(
-                    lat: self.city.coord.lat,
-                    lon: self.city.coord.lon
+                coord: CoordinateDTO(
+                    latitude: self.city.coord.lat,
+                    longitude: self.city.coord.lon
                 ),
                 country: self.city.country
             )

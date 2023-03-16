@@ -20,8 +20,8 @@ final class ForecastRemoteDataSource: ForecastRemoteDataSourceType {
     }
     
     func getBy(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> Future<ForecastResponseDTO, Error> {
         
         let request = GetForecastRequest(

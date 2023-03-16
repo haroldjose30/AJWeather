@@ -10,8 +10,8 @@ import Combine
 public protocol ForecastRepositoryType {
     
     func getBy(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> Future<ForecastDTO, Error>
     
 }

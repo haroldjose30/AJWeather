@@ -16,8 +16,8 @@ extension ForecastDTO {
                 id: self.city.id,
                 name: self.city.name,
                 coord: CoordinateModel(
-                    latitude: self.city.coord.lat,
-                    longitude: self.city.coord.lon
+                    latitude: self.city.coord.latitude,
+                    longitude: self.city.coord.longitude
                 ),
                 country: self.city.country
             ),

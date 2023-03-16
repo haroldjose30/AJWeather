@@ -13,8 +13,8 @@ class GenericCoreDataSource<
 >: GenericCoreDataSourceType {
     
     private let container: NSPersistentContainer
-    private let mapToEntity:(CoreDataEntity) -> Entity
-    private let updateCoreDataEntity: (CoreDataEntity,Entity) -> Void
+    let mapToEntity:(CoreDataEntity) -> Entity
+    let updateCoreDataEntity: (CoreDataEntity,Entity) -> Void
     
     init(
         mapToEntity: @escaping (CoreDataEntity) -> Entity,
@@ -29,6 +29,12 @@ class GenericCoreDataSource<
         entity: Entity
     ) async throws {
         
+        if let coreDataEntity = try fetchBy(id: entity.id) {
+            updateCoreDataEntity(coreDataEntity,entity)
+            saveContext()
+            return
+        }
+        
         let coreDataEntity = CoreDataEntity(context: container.viewContext)
         updateCoreDataEntity(coreDataEntity,entity)
         saveContext()
@@ -38,7 +44,7 @@ class GenericCoreDataSource<
         entity: Entity
     ) async throws {
         
-        guard let coreDataEntity = try fetchById(entity.id) else {
+        guard let coreDataEntity = try fetchBy(id: entity.id) else {
             throw GenericCoreDataSourceError.entityNotFound
         }
         updateCoreDataEntity(coreDataEntity,entity)
@@ -55,7 +61,7 @@ class GenericCoreDataSource<
         _ id: Int
     ) async throws -> Entity? {
         
-        guard let coreDataEntity = try fetchById(id) else {
+        guard let coreDataEntity = try fetchBy(id: id) else {
             return nil
         }
         return mapToEntity(coreDataEntity)
@@ -65,7 +71,7 @@ class GenericCoreDataSource<
         _ id: Int
     ) async throws {
         
-        guard let coreDataEntity = try fetchById(id) else {
+        guard let coreDataEntity = try fetchBy(id: id) else {
             return
         }
         
@@ -80,27 +86,37 @@ class GenericCoreDataSource<
     }
 }
 
-private extension GenericCoreDataSource {
+// MARK: - CoreData Auxiliary functions
+
+extension GenericCoreDataSource {
     
-    func fetchAll<CoreDataEntity:NSFetchRequestResult>() throws -> [CoreDataEntity] {
+    func fetchAll() throws -> [CoreDataEntity] {
         
         let request = NSFetchRequest<CoreDataEntity>(entityName: String(describing: CoreDataEntity.self))
         let coreDataEntities = try container.viewContext.fetch(request)
         return coreDataEntities
     }
     
-    func fetchById(
-        _ id: Int
+    func fetchBy(
+        id: Int
+    ) throws -> CoreDataEntity? {
+        
+        try fetchBy(filter: NSPredicate(format: "id = %@", String(id)))
+    }
+    
+    func fetchBy(
+        filter: NSPredicate
     ) throws -> CoreDataEntity? {
         
         let request = NSFetchRequest<CoreDataEntity>(entityName: String(describing: CoreDataEntity.self))
         request.fetchLimit = 1
-        request.predicate = NSPredicate(format: "id = %@", String(id))
+        request.predicate = filter
         let coreDataEntity = try container.viewContext.fetch(request).first
         return coreDataEntity
     }
     
     func saveContext(){
+        
         let context = container.viewContext
         if context.hasChanges {
             do{

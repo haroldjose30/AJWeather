@@ -9,7 +9,7 @@ struct CityEntity: EntityType {
     
     var id: Int
     let name: String
-    let latitude: Double
-    let longitude: Double
+    let latitude: Float
+    let longitude: Float
     let country: String
 }

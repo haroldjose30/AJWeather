@@ -7,8 +7,8 @@
 
 struct CoordinateResponseDTO: Codable {
     
-    let lat: Double
-    let lon: Double
+    let lat: Float
+    let lon: Float
     
     enum CodingKeys: String, CodingKey {
         case lat

@@ -9,17 +9,17 @@ public extension ForecastModel {
     
     struct TemperatureDetailModel {
         
-        public let temp: Double
-        public let feelsLike: Double
-        public let tempMin: Double
-        public let tempMax: Double
+        public let temp: Float
+        public let feelsLike: Float
+        public let tempMin: Float
+        public let tempMax: Float
         public let humidity: Int
         
         public init(
-            temp: Double,
-            feelsLike: Double,
-            tempMin: Double,
-            tempMax: Double,
+            temp: Float,
+            feelsLike: Float,
+            tempMin: Float,
+            tempMax: Float,
             humidity: Int
         ) {
             

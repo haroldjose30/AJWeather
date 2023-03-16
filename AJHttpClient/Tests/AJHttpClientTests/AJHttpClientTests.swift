@@ -4,7 +4,7 @@ import Combine
 
 final class AJHttpClientTests: XCTestCase {
     
-    private let timeout:Double = 5
+    private let timeout:Float = 5
     private var httpClient: AJHttpClientType!
     private var cancellables: Set<AnyCancellable>!
     

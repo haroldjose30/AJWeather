@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import AJWeather
+@testable import AJWeatherApp
 
 final class AJWeatherTests: XCTestCase {
 

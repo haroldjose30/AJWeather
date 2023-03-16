@@ -7,7 +7,7 @@
 
 struct ForecastDetailResponseDTO: Codable {
     
-    let dt: Double
+    let dt: Int
     let main: TemperatureDetailResponseDTO
     let weather: [WeatherResponseDTO]
     let dtTxt: String

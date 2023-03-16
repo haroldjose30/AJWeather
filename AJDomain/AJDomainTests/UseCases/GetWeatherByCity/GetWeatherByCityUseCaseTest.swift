@@ -41,8 +41,8 @@ final class GetWeatherByCityUseCaseTest: XCTestCase {
         
         //arrange
         let expectation = self.expectation(description: #function)
-        let latitude: Double = 40.64
-        let longitude: Double = -8.64
+        let latitude: Float = 40.64
+        let longitude: Float = -8.64
         
         let forecastDTOExpected = ForecastDTO.fixture(
             city: .fixture(
@@ -87,8 +87,8 @@ final class GetWeatherByCityUseCaseTest: XCTestCase {
         
         //arrange
         let expectation = self.expectation(description: #function)
-        let latitude: Double = 40.64
-        let longitude: Double = -8.64
+        let latitude: Float = 40.64
+        let longitude: Float = -8.64
         
         repository.getByToReturn = Future { promisse in
             promisse(.failure(FakeError.error))

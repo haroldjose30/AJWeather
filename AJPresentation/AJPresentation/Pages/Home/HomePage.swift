@@ -31,7 +31,10 @@ public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
                 )
             case .success(let data):
                 HomeSuccessView(
-                    data: data
+                    data: data,
+                    reloadAction: {
+                        viewModel.loadData()
+                    }
                 )
             }
         }

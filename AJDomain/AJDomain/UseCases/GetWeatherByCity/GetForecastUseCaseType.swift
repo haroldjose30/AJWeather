@@ -10,7 +10,7 @@ import Combine
 public protocol GetForecastUseCaseType {
     
     func execute(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> AnyPublisher<ForecastModel, Error>
 }

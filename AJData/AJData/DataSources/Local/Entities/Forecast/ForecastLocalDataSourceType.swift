@@ -7,4 +7,12 @@
 
 protocol ForecastLocalDataSourceType {
     
+    func saveInCache(
+        _ forecastDTO: ForecastDTO
+    ) async throws
+    
+    func getFromCacheBy(
+        latitude: Float,
+        longitude: Float
+    ) async throws -> ForecastDTO?
 }

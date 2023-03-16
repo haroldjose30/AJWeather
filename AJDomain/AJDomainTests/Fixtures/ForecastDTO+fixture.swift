@@ -27,16 +27,16 @@ extension ForecastDTO {
     }
 }
 
-extension ForecastDTO.CityDTO {
+extension CityDTO {
     
     static func fixture(
         id: Int = 0,
         name: String = "",
-        coord: ForecastDTO.CoordinateDTO = .fixture(),
+        coord: CoordinateDTO = .fixture(),
         country: String = ""
-    ) -> ForecastDTO.CityDTO {
+    ) -> CityDTO {
         
-        ForecastDTO.CityDTO(
+        CityDTO(
             id: id,
             name: name,
             coord: coord,
@@ -45,30 +45,30 @@ extension ForecastDTO.CityDTO {
     }
 }
 
-extension ForecastDTO.CoordinateDTO {
+extension CoordinateDTO {
     
     static func fixture(
-        lat: Double = 0,
-        lon: Double = 0
-    ) -> ForecastDTO.CoordinateDTO {
+        latitude: Float = 0,
+        longitude: Float = 0
+    ) -> CoordinateDTO {
         
-        ForecastDTO.CoordinateDTO(
-            lat: lat,
-            lon: lon
+        CoordinateDTO(
+            latitude: latitude,
+            longitude: longitude
         )
     }
 }
 
-extension ForecastDTO.ForecastDetailDTO {
+extension ForecastDetailDTO {
     
     static func fixture(
         dt: Int = 0,
-        main: ForecastDTO.TemperatureDetailDTO = .fixture(),
-        weather: [ForecastDTO.WeatherDTO] = [],
+        main: TemperatureDetailDTO = .fixture(),
+        weather: [WeatherDTO] = [],
         dtTxt: String = ""
-    ) -> ForecastDTO.ForecastDetailDTO {
+    ) -> ForecastDetailDTO {
         
-        ForecastDTO.ForecastDetailDTO(
+        ForecastDetailDTO(
             dt: dt,
             main: main,
             weather: weather,
@@ -77,17 +77,17 @@ extension ForecastDTO.ForecastDetailDTO {
     }
 }
 
-extension ForecastDTO.TemperatureDetailDTO {
+extension TemperatureDetailDTO {
     
     static func fixture(
-        temp: Double = 0,
-        feelsLike: Double = 0,
-        tempMin: Double = 0,
-        tempMax: Double = 0,
+        temp: Float = 0,
+        feelsLike: Float = 0,
+        tempMin: Float = 0,
+        tempMax: Float = 0,
         humidity: Int = 0
-    ) -> ForecastDTO.TemperatureDetailDTO {
+    ) -> TemperatureDetailDTO {
         
-        ForecastDTO.TemperatureDetailDTO(
+        TemperatureDetailDTO(
             temp: temp,
             feelsLike: feelsLike,
             tempMin: tempMin,
@@ -97,16 +97,16 @@ extension ForecastDTO.TemperatureDetailDTO {
     }
 }
 
-extension ForecastDTO.WeatherDTO {
+extension WeatherDTO {
     
     static func fixture(
         id: Int = 0,
         main: String = "",
         description: String = "",
         icon: String = ""
-    ) -> ForecastDTO.WeatherDTO {
+    ) -> WeatherDTO {
         
-        ForecastDTO.WeatherDTO(
+        WeatherDTO(
             id: id,
             main: main,
             description: description,

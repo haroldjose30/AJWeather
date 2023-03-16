@@ -15,8 +15,8 @@ class SpyForecastRepository: ForecastRepositoryType {
         promisse(.success(ForecastDTO.fixture()))
     }
     func getBy(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> Future<ForecastDTO, Error> {
         
         getByCalled = true

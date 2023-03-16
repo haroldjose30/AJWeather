@@ -24,8 +24,14 @@ public extension AJDIContainer {
             )
         }
         
+        self.register(type: CityLocalDataSource.self) { container in
+            CityLocalDataSource()
+        }
+        
         self.register(type: ForecastLocalDataSourceType.self) { container in
-            ForecastLocalDataSource()
+            ForecastLocalDataSource(
+                cityLocalDataSource: try container.resolve(type: CityLocalDataSource.self)
+            )
         }
         
         self.register(type: ForecastRepositoryType.self) { container in

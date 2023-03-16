@@ -9,13 +9,13 @@ public extension ForecastModel {
     
     struct ForecastDetailModel {
         
-        public let date: Double
+        public let date: Int
         public let dateTxt: String
         public let main: TemperatureDetailModel
         public let weather: [WeatherModel]
         
         public init(
-            date: Double,
+            date: Int,
             dateTxt: String,
             main: TemperatureDetailModel,
             weather: [WeatherModel]

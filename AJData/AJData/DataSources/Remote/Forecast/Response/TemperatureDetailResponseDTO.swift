@@ -7,10 +7,10 @@
 
 struct TemperatureDetailResponseDTO: Codable {
     
-    let temp: Double
-    let feelsLike: Double
-    let tempMin: Double
-    let tempMax: Double
+    let temp: Float
+    let feelsLike: Float
+    let tempMin: Float
+    let tempMax: Float
     let humidity: Int
     
     enum CodingKeys: String, CodingKey {

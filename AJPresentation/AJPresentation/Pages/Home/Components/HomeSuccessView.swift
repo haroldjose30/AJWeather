@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeSuccessView: View {
     
     let data: HomeViewObject
+    let reloadAction: () -> Void
     
     var body: some View {
         
@@ -19,7 +20,7 @@ struct HomeSuccessView: View {
             
             
             if data.dates.isEmpty {
-                EmptyDateView()
+                EmptyDateView(reloadAction:reloadAction)
             } else {
                 List(data.dates, id: \.date) { dateGroup in
                     Section(header: SectionView(text: dateGroup.date)) {
@@ -28,6 +29,10 @@ struct HomeSuccessView: View {
                         )
                     }
                 }.listStyle(.insetGrouped)
+                
+                Button(Localizable.reload) {
+                    reloadAction()
+                }
             }
             
         }
@@ -77,12 +82,17 @@ struct HomeSuccessView: View {
     }
     
     private struct EmptyDateView: View {
-        
+        let reloadAction: () -> Void
         var body: some View {
             VStack {
                 Spacer()
                 Text(Localizable.emptyDate)
                     .font(.title2)
+                
+                Button(Localizable.reload) {
+                    reloadAction()
+                }
+                
                 Spacer()
             }
         }
@@ -245,7 +255,8 @@ struct HomeSuccessView_Previews: PreviewProvider {
                         ]
                     ),
                 ]
-            )
+            ),
+            reloadAction: {}
         )
     }
 }

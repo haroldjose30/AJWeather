@@ -1,11 +1,12 @@
 //
-//  CoordinateModel.swift
-//  AJDomain
+//  CoordinateDTO.swift
+//  AJData
 //
-//  Created by Jose Harold on 12/03/2023.
+//  Created by Jose Harold on 16/03/2023.
 //
 
-public struct CoordinateModel {
+public struct CoordinateDTO {
+    
     
     public let latitude: Float
     public let longitude: Float
@@ -14,7 +15,6 @@ public struct CoordinateModel {
         latitude: Float,
         longitude: Float
     ) {
-        
         self.latitude = latitude
         self.longitude = longitude
     }

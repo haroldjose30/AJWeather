@@ -19,8 +19,8 @@ public class HomeViewModel: HomeViewModelType,ObservableObject {
     @Published public var viewState: ViewStateBase<HomeViewObject> = .idle
     private let getWeatherByCityUseCase: GetForecastUseCaseType
     private var cancellables: Set<AnyCancellable> = []
-    private let latitude: Double = 40.64
-    private let longitude: Double = -8.64
+    private let latitude: Float = 40.64
+    private let longitude: Float = -8.64
     
     public init(
         getWeatherByCityUseCase: GetForecastUseCaseType

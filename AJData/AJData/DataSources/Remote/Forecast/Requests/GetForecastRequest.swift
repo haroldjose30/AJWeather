@@ -16,8 +16,8 @@ struct GetForecastRequest: AJHttpRequestGetJson {
     var headers: AJHttpHeaders = [:]
     
     init(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) {
         self.urlBase = OpenWeatherEndpoint.baseUrl
         self.path = OpenWeatherEndpoint.Resource.forecast
@@ -37,7 +37,7 @@ struct GetForecastRequest: AJHttpRequestGetJson {
 }
 
 
-private extension Double {
+private extension Float {
     
     func toString() -> String {
         

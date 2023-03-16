@@ -7,6 +7,10 @@
 
 import Combine
 
+enum ForecastRepositoryError: Error {
+    case dataNotExists
+}
+
 final class ForecastRepository: ForecastRepositoryType {
     
     private var cancellables: Set<AnyCancellable>
@@ -23,17 +27,38 @@ final class ForecastRepository: ForecastRepositoryType {
     }
     
     func getBy(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> Future<ForecastDTO, Error> {
         
         
         //if not exists connection seach from localDataSource
-        
-        //if has connection try to search from remoteDataSource
+        if !Reachability.isConnectedToNetwork(){
+            
+            
+            return Future { promise in
+                
+                Task {
+                    guard
+                        let forecastDTO = try await self.localDataSource.getFromCacheBy(
+                            latitude: latitude,
+                            longitude: longitude
+                        )
+                    else {
+                        promise(Result.failure(ForecastRepositoryError.dataNotExists))
+                        return
+                    }
+                    
+                    promise(Result.success(forecastDTO))
+                }
+                
+            }
+        }
+       
+        //get from remote
         return Future { [self] promise in
             
-            self.remoteDataSource.getBy(
+            return self.remoteDataSource.getBy(
                 latitude: latitude,
                 longitude: longitude
             )
@@ -47,19 +72,16 @@ final class ForecastRepository: ForecastRepositoryType {
                     }
                     
                 }, receiveValue: { forecastResponseDTO in
-                    promise(
-                        Result.success(
-                            forecastResponseDTO.maptoForecastDTO()
-                        )
-                    )
+                    
+                    let forecastDTO = forecastResponseDTO.maptoForecastDTO()
+                    Task {
+                        //save remote data on local cache
+                        try await self.localDataSource.saveInCache(forecastDTO)
+                        promise(Result.success(forecastDTO))
+                    }
                 })
             .store(in: &self.cancellables)
         }
-        
-        
-        //save remote data on local cache
-        
-        //return remoteDataSource
     }
     
 }

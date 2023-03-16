@@ -22,8 +22,8 @@ final class GetForecastUseCase: GetForecastUseCaseType {
     }
     
     public func execute(
-        latitude: Double,
-        longitude: Double
+        latitude: Float,
+        longitude: Float
     ) -> AnyPublisher<ForecastModel, Error> {
         
         return repository

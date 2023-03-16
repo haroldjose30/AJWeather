@@ -11,8 +11,8 @@ extension CityCoreDataEntity {
         
         self.id = entity.id.toInt32()
         self.name = entity.name
-        self.latitude = entity.latitude
-        self.longitude = entity.longitude
+        self.latitude = entity.latitude.roundTo(6)
+        self.longitude = entity.longitude.roundTo(6)
         self.country = entity.country
     }
 }

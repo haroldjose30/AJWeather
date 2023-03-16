@@ -9,5 +9,6 @@
 "generic_error_message" = "oops something went wrong.";
 "retry_button_title" = "retry";
 "empty_date" = "oops, no weather info was found, try another city.";
+"reload_button_title" = "Reload data";
 
 
