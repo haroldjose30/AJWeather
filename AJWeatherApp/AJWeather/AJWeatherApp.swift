@@ -35,11 +35,12 @@ struct AJWeatherApp: App {
             HomePage<HomeViewModel>(
                 viewModel: viewModel
             )
-            //CoreDataTestView()
-            //    .environment(\.managedObjectContext, CoreDataPersistenceDataBase.shared.container.viewContext)
+//            CoreDataTestView()
+//                .environment(\.managedObjectContext, CoreDataManager.shared.container.viewContext)
         }.onChange(of: scenePhase) { _ in
+            
             //TODO: Add an UseCase to Save DataBase and avoid direct access
-            CoreDataPersistenceDataBase.shared.save()
+            CoreDataManager.getInstance().saveContext()
         }
     }
 }

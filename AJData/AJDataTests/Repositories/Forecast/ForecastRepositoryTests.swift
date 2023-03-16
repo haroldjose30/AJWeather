@@ -18,48 +18,50 @@ import Combine
 @testable import AJData
 
 final class ForecastRepositoryTests: XCTestCase {
-    
+
     private let timeout:Double = 5
     private var repository: ForecastRepositoryType!
     private var cancellables: Set<AnyCancellable>!
-    
+
     //TODO: change do a Spy
     private var remoteDataSource: ForecastRemoteDataSourceType!
-    //TODO: change do a Spy
+    private var localDataSource: ForecastLocalDataSourceType!
     private var httpClient: AJHttpClientType!
-    
-    
+
+
     override func setUpWithError() throws {
         cancellables = []
         httpClient = AJHttpClient()
+        localDataSource = ForecastLocalDataSource()
         remoteDataSource = ForecastRemoteDataSource(
             httpClient: httpClient
         )
         repository = ForecastRepository(
-            remoteDataSource: remoteDataSource
+            remoteDataSource: remoteDataSource,
+            localDataSource: localDataSource
         )
     }
-    
+
     override func tearDownWithError() throws {
-        
+
         remoteDataSource = nil
         httpClient = nil
         cancellables.removeAll()
         cancellables = nil
-        
+
     }
-    
-    
-    
+
+
+
     func test_getBy_WhenSuccess_ShouldReturnForecastDTO() throws {
-        
+
         //arrange
         let expectation = self.expectation(description: #function)
         let latitude: Double = 40.64
         let longitude: Double = -8.64
         let cityExpected = "Aveiro"
         let cityIdExpected = 2742611
-        
+
         //act
         repository.getBy(
             latitude: latitude,
@@ -67,7 +69,7 @@ final class ForecastRepositoryTests: XCTestCase {
         )
         .sink(
             receiveCompletion: { completion in
-                
+
                 switch completion {
                 case .finished:
                     break
@@ -75,7 +77,7 @@ final class ForecastRepositoryTests: XCTestCase {
                     XCTFail(error.localizedDescription)
                 }
                 expectation.fulfill()
-                
+
             },
             receiveValue: { forecastDTO in
                 //assert
@@ -86,7 +88,7 @@ final class ForecastRepositoryTests: XCTestCase {
             }
         )
         .store(in: &self.cancellables)
-        
+
         waitForExpectations(timeout: timeout)
     }
 }

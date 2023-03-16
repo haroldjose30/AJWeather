@@ -13,9 +13,9 @@ struct CoreDataTestView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \ItemCoreDataEntity.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<ItemCoreDataEntity>
     
     var body: some View {
         NavigationView {
@@ -45,7 +45,7 @@ struct CoreDataTestView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = ItemCoreDataEntity(context: viewContext)
             newItem.timestamp = Date()
             
             do {
@@ -85,7 +85,7 @@ private let itemFormatter: DateFormatter = {
 struct CoreDataTestView_Previews: PreviewProvider {
     static var previews: some View {
         CoreDataTestView()
-            .environment(\.managedObjectContext, CoreDataPersistenceDataBase.preview.container.viewContext)
+            .environment(\.managedObjectContext, CoreDataManager.preview.container.viewContext)
     }
 }
 

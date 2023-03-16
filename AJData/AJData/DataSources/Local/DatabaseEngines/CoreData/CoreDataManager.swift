@@ -1,6 +1,6 @@
 //
-//  PersistenceController.swift
-//  AJWeatherApp
+//  CoreDataManager.swift
+//  AJData
 //
 //  Created by Jose Harold on 15/03/2023.
 //
@@ -8,21 +8,35 @@
 import Foundation
 import CoreData
 
-public struct CoreDataPersistenceDataBase {
+public struct CoreDataManager: DataBaseManagerType {
+    
+    //TODO: Verify another wat to avoid singletons
+    private static var _shared: CoreDataManager?
+    public static func getInstance(
+        inMemory: Bool = false
+    ) -> CoreDataManager {
+        
+        if let instance = _shared {
+            return instance
+        }
+        
+        let instance = CoreDataManager(
+            inMemory: inMemory
+        )
+        _shared = instance
+        return instance
+    }
     
     private let persistentModelName = "AJWeatherModel"
     private let persistentModelExtension = ".xcdatamodeld"
+    public private(set) var container: NSPersistentCloudKitContainer
     
-    public static let shared = CoreDataPersistenceDataBase()
-    
-    public let container: NSPersistentCloudKitContainer
-    
-    private init(
+    init(
         ///to use an in-memory store.
         inMemory: Bool = false
     ) {
         //Load database from AJData.Framework
-        let bundle = Bundle(for: AJDataBundle.self)
+        let bundle = Bundle(for: AJDataBundleMarker.self)
         let managedObjectModel = NSManagedObjectModel.mergedModel(from: [bundle])!
         container = NSPersistentCloudKitContainer(
             name: persistentModelName,
@@ -49,34 +63,22 @@ public struct CoreDataPersistenceDataBase {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
-    
-    public func save() {
-        let context = container.viewContext
-        
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Show some error here
-            }
-        }
-    }
 }
 
 // MARK: - for SwiftUI previews
 
-extension CoreDataPersistenceDataBase {
+extension CoreDataManager {
     
     // A test configuration for SwiftUI previews
-    public static var preview: CoreDataPersistenceDataBase = {
+    public static var preview: CoreDataManager = {
         
-        let result = CoreDataPersistenceDataBase(inMemory: true)
+        let result = CoreDataManager(inMemory: true)
         
         let viewContext = result.container.viewContext
         
         // Create 10 example of register for preview
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
+            let newItem = ItemCoreDataEntity(context: viewContext)
             newItem.timestamp = Date()
         }
         do {
@@ -91,9 +93,36 @@ extension CoreDataPersistenceDataBase {
     }()
 }
 
+// MARK: - DataBaseEngineType
 
-public final class AJDataBundle {
+extension CoreDataManager {
+    
+    public func initialize() {
+        CoreDataManager.getInstance().saveContext()
+    }
+    
+    public func saveContext() {
+        
+        let context =  CoreDataManager.getInstance().container.viewContext
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch let error {
+                //TODO: Show some error here
+                print("CoreDataManager","Error:",error)
+            }
+        }
+    }
+    
+    public func dispose() {
+        CoreDataManager._shared = nil
+    }
+}
+
+
+public final class AJDataBundleMarker {
     private init() { }
-    // marker class
+    // marker class for bundle locator, this is necessary to locate Datamodel file outer main bundler
 }
 

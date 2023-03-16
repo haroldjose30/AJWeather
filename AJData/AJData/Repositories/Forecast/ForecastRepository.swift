@@ -11,15 +11,15 @@ final class ForecastRepository: ForecastRepositoryType {
     
     private var cancellables: Set<AnyCancellable>
     let remoteDataSource: ForecastRemoteDataSourceType
-    //let localDataSource: ForecastLocalDataSourceType
+    let localDataSource: ForecastLocalDataSourceType
     
     init(
-        remoteDataSource: ForecastRemoteDataSourceType
-        //localDataSource: ForecastLocalDataSourceType
+        remoteDataSource: ForecastRemoteDataSourceType,
+        localDataSource: ForecastLocalDataSourceType
     ) {
         self.cancellables = []
         self.remoteDataSource = remoteDataSource
-        //self.localDataSource = localDataSource
+        self.localDataSource = localDataSource
     }
     
     func getBy(

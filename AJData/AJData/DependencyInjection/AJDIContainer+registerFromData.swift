@@ -12,6 +12,8 @@ public extension AJDIContainer {
     
     func registerFromData() {
         
+        CoreDataManager.getInstance().initialize()
+        
         self.register(type: AJHttpClientType.self) { _ in
             AJHttpClient()
         }
@@ -22,9 +24,14 @@ public extension AJDIContainer {
             )
         }
         
+        self.register(type: ForecastLocalDataSourceType.self) { container in
+            ForecastLocalDataSource()
+        }
+        
         self.register(type: ForecastRepositoryType.self) { container in
             ForecastRepository(
-                remoteDataSource: try container.resolve(type: ForecastRemoteDataSourceType.self)
+                remoteDataSource: try container.resolve(type: ForecastRemoteDataSourceType.self),
+                localDataSource: try container.resolve(type: ForecastLocalDataSourceType.self)
             )
         }
     }
