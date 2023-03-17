@@ -1,11 +1,11 @@
 //
-//  ViewStateBase.swift
+//  ViewState.swift
 //  AJPresentation
 //
 //  Created by Jose Harold on 13/03/2023.
 //
 
-public enum ViewStateBase<T> {
+public enum ViewState<T> {
     
     case idle
     case loading

@@ -17,7 +17,10 @@ extension ForecastDTO {
                 name: self.city.name,
                 latitude: self.city.latitude,
                 longitude: self.city.longitude,
-                country: self.city.country
+                country: self.city.country,
+                population: self.city.population,
+                sunrise: self.city.sunrise,
+                sunset: self.city.sunset
             ),
             list: self.list.map({ forecastDetailDTO in
                 ForecastDetailModel(

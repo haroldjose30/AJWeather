@@ -28,7 +28,10 @@ extension CityDTO {
         name: String = "",
         latitude: Float = 0,
         longitude: Float = 0,
-        country: String = ""
+        country: String = "",
+        population: Int = 0,
+        sunrise: Int = 0,
+        sunset: Int = 0
     ) -> CityDTO {
         
         CityDTO(
@@ -36,7 +39,10 @@ extension CityDTO {
             name: name,
             latitude: latitude,
             longitude: longitude,
-            country: country
+            country: country,
+            population: population,
+            sunrise: sunrise,
+            sunset: sunset
         )
     }
 }

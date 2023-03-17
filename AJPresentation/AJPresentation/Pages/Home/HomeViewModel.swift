@@ -9,14 +9,9 @@ import Foundation
 import AJDomain
 import Combine
 
-public protocol HomeViewModelType: ObservableObject {
-    var viewState: ViewStateBase<HomeViewObject> { get set }
-    func loadData()
-}
-
 public class HomeViewModel: HomeViewModelType,ObservableObject {
     
-    @Published public var viewState: ViewStateBase<HomeViewObject> = .idle
+    @Published public var viewState: ViewState<HomeViewObject> = .idle
     private let getWeatherByCityUseCase: GetForecastUseCaseType
     private var cancellables: Set<AnyCancellable> = []
     private let latitude: Float = 40.64

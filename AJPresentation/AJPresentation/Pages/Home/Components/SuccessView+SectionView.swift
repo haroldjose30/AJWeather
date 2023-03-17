@@ -16,7 +16,7 @@ extension HomeSuccessView {
             HStack {
                 Spacer()
                 Text(text)
-                    .font(.title)
+                    .font(.title3)
                 Spacer()
             }
         }

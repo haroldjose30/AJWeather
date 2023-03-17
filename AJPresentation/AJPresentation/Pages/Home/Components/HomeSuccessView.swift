@@ -6,35 +6,68 @@
 //
 
 import SwiftUI
+import AJDependencyInjection
+import AJDomain
 
 struct HomeSuccessView: View {
-    
+   
+    let city: CityModel
     let data: HomeViewObject
     let reloadAction: () -> Void
     
+    init(
+        city: CityModel,
+        data: HomeViewObject,
+        reloadAction: @escaping () -> Void
+    ) {
+        self.data = data
+        self.reloadAction = reloadAction
+        self.city = city
+    }
+    
+   
+    
     var body: some View {
         
-        VStack {
-            Text(data.title)
-                .font(.largeTitle)
-            
-            
-            if data.dates.isEmpty {
-                EmptyDateView(reloadAction:reloadAction)
-            } else {
-                List(data.dates, id: \.date) { dateGroup in
-                    Section(header: SectionView(text: dateGroup.date)) {
-                        SectionListView(
-                            hours: dateGroup.hours
-                        )
-                    }
-                }.listStyle(.insetGrouped)
+        NavigationView  {
+            VStack {
                 
-                Button(Localizable.reload) {
-                    reloadAction()
+                ZStack {
+                    
+                    VStack {
+                        Text(data.title)
+                            .font(.title)
+                    }
+                    
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: CityDetailPage(viewModel: CityDetailViewModel(city: city))) {
+                            Image(systemName: "map")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30,height:30)
+                        }
+                    }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
+                    
                 }
+                
+                if data.dates.isEmpty {
+                    EmptyDateView(reloadAction:reloadAction)
+                } else {
+                    List(data.dates, id: \.date) { dateGroup in
+                        Section(header: SectionView(text: dateGroup.date)) {
+                            SectionListView(
+                                hours: dateGroup.hours
+                            )
+                        }
+                    }.listStyle(.insetGrouped)
+                    
+                    Button(Localizable.reload) {
+                        reloadAction()
+                    }
+                }
+                
             }
-            
         }
     }
     
@@ -104,7 +137,27 @@ struct HomeSuccessView_Previews: PreviewProvider {
     static var previews: some View {
         
         HomeSuccessView(
+            city: CityModel(
+                id: "",
+                name: "",
+                latitude: 0,
+                longitude: 0,
+                country: "",
+                population: 0,
+                sunrise: 0,
+                sunset: 0)
+            ,
             data: HomeViewObject(
+                city: CityModel(
+                    id: "2742611",
+                    name: "Aveiro",
+                    latitude: 40.64,
+                    longitude: -8.64,
+                    country: "PT",
+                    population: 54162,
+                    sunrise: 1679035421,
+                    sunset: 1679078546
+                ),
                 title: "Aveiro,PT",
                 dates: [
                     HomeViewObject.DateViewObject(

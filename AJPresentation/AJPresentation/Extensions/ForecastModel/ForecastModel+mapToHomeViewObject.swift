@@ -16,9 +16,9 @@ extension ForecastModel {
             .sorted(by: {$0.date < $1.date})
             .forEach { detail in
                 
-                let date = getDateFromUnix(detail.date)
-                let dateFormatted = getFormattedDate(date)
-                let time = getFormattedTime(date)
+                let date = detail.date.toDate()
+                let dateFormatted = date.formatterToRelative()
+                let time = date.formatterToTime()
                 
                 var dateViewObject: HomeViewObject.DateViewObject? = dates.first(where: { $0.date == dateFormatted})
                 if dateViewObject == nil {
@@ -46,6 +46,7 @@ extension ForecastModel {
             }
         
         return HomeViewObject(
+            city: self.city,
             title: "\(self.city.name),\(self.city.country)",
             dates: dates
         )
@@ -54,36 +55,9 @@ extension ForecastModel {
 
 private extension ForecastModel {
     
-    func getDateFromUnix(_ dateInt: Int) -> Date {
-        Date(timeIntervalSince1970: Double(dateInt))
-    }
-    
-    func getFormattedDate(_ date: Date) -> String {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM dd"
-        
-        let relativeDateFormatter = DateFormatter()
-        relativeDateFormatter.timeStyle = .none
-        relativeDateFormatter.dateStyle = .medium
-        relativeDateFormatter.doesRelativeDateFormatting = true
-        
-        let datestr = relativeDateFormatter.string(from: date)
-        if let _ = datestr.rangeOfCharacter(from: .decimalDigits) {
-            return dateFormatter.string(from: date)
-        } else {
-            return datestr
-        }
-    }
-    
-    func getFormattedTime(_ date: Date) -> String {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date)
-    }
     
     func getIconUrl(_ icon: String?) -> String {
+        
         guard let icon = icon else  {
             return ""
         }

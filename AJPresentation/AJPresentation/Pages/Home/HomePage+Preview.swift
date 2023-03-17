@@ -12,30 +12,40 @@ extension HomePage_Previews {
     
     final class FakeHomeViewMode: HomeViewModelType {
         
-        var viewState: ViewStateBase<HomeViewObject> = .success(data: getFakeData())
+        var viewState: ViewState<HomeViewObject> = .success(data: getFakeData())
         func loadData() {}
     }
     
     final class FakeHomeViewModeWithEmptyDate: HomeViewModelType {
         
-        var viewState: ViewStateBase<HomeViewObject> = .success(data: getFakeDataWithEmptyDate())
+        var viewState: ViewState<HomeViewObject> = .success(data: getFakeDataWithEmptyDate())
         func loadData() {}
     }
     
     final class FakeHomeViewModeWithError: HomeViewModelType {
         
-        var viewState: ViewStateBase<HomeViewObject> = .failed(message: nil, action: {})
+        var viewState: ViewState<HomeViewObject> = .failed(message: nil, action: {})
         func loadData() {}
     }
     
     final class FakeHomeViewModeWithIdle: HomeViewModelType {
         
-        var viewState: ViewStateBase<HomeViewObject> = .idle
+        var viewState: ViewState<HomeViewObject> = .idle
         func loadData() {}
     }
     
     private static func getFakeData() -> HomeViewObject {
         HomeViewObject(
+            city: CityModel(
+                id: "",
+                name: "",
+                latitude: 0,
+                longitude: 0,
+                country: "",
+                population: 0,
+                sunrise: 0,
+                sunset: 0
+            ),
             title: "Aveiro,PT",
             dates: [
                 HomeViewObject.DateViewObject(
@@ -113,6 +123,16 @@ extension HomePage_Previews {
     
     private static func getFakeDataWithEmptyDate() -> HomeViewObject {
         HomeViewObject(
+            city: CityModel(
+                id: "",
+                name: "",
+                latitude: 0,
+                longitude: 0,
+                country: "OT",
+                population: 0,
+                sunrise: 0,
+                sunset: 0
+            ),
             title: "Aveiro,PT",
             dates: []
         )

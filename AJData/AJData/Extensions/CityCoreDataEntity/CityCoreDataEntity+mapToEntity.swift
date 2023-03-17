@@ -14,7 +14,10 @@ extension CityCoreDataEntity {
             name: self.name ?? "",
             latitude: self.latitude,
             longitude: self.longitude,
-            country: self.country ?? ""
+            country: self.country ?? "",
+            population: self.population.toInt(),
+            sunrise: self.sunrise.toInt(),
+            sunset: self.sunset.toInt()
         )
     }
 }

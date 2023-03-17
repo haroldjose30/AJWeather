@@ -31,10 +31,10 @@ struct AJWeatherApp: App {
     var body: some Scene {
 
         return WindowGroup {
-
             HomePage<HomeViewModel>(
                 viewModel: viewModel
             )
+          
 //            CoreDataTestView()
 //                .environment(\.managedObjectContext, CoreDataManager.shared.container.viewContext)
         }.onChange(of: scenePhase) { _ in

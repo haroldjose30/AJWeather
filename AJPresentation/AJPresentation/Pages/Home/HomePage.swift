@@ -10,9 +10,10 @@ import SwiftUI
 
 public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
     
-    @StateObject var viewModel: ViewModel
-    
-    public init(viewModel: ViewModel) {
+    @StateObject var viewModel: ViewModel    
+    public init(
+        viewModel: ViewModel
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -31,6 +32,7 @@ public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
                 )
             case .success(let data):
                 HomeSuccessView(
+                    city: data.city,
                     data: data,
                     reloadAction: {
                         viewModel.loadData()

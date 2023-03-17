@@ -12,4 +12,7 @@ struct CityEntity: EntityType {
     let latitude: Float
     let longitude: Float
     let country: String
+    let population: Int
+    let sunrise: Int
+    let sunset: Int
 }

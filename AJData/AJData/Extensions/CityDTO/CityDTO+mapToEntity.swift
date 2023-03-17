@@ -14,7 +14,10 @@ extension CityDTO {
             name: self.name,
             latitude: self.latitude,
             longitude: self.longitude,
-            country: self.country
+            country: self.country,
+            population: self.population,
+            sunrise: self.sunrise,
+            sunset: self.sunset
         )
     }
 }

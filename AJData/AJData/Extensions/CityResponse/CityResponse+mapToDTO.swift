@@ -14,7 +14,10 @@ extension CityResponse {
             name: self.name,
             latitude: self.coord.lat,
             longitude: self.coord.lon,
-            country: self.country
+            country: self.country,
+            population: self.population,
+            sunrise: self.sunrise,
+            sunset: self.sunset
         )
     }
 }

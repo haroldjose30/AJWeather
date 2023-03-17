@@ -39,7 +39,10 @@ final class CityLocalDataSourceTests: XCTestCase {
             name: "FakeCity",
             latitude: 10,
             longitude: 10,
-            country: "FK"
+            country: "FK",
+            population: 0,
+            sunrise: 0,
+            sunset: 0
         )
         try await localDataSource.create(entity: entityToCreate)
         let cities = try await localDataSource.getAll()
@@ -52,7 +55,10 @@ final class CityLocalDataSourceTests: XCTestCase {
             name: "FakeCityUpdated",
             latitude: 11,
             longitude: 11,
-            country: "FKU"
+            country: "FKU",
+            population: 0,
+            sunrise: 0,
+            sunset: 0
         )
         
         let entityBeforeUpdate = try await localDataSource.getById(entityId)
