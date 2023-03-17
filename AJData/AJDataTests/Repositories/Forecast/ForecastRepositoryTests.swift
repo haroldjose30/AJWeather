@@ -18,58 +18,73 @@ import Combine
 @testable import AJData
 
 final class ForecastRepositoryTests: XCTestCase {
-
-    private let timeout:Float = 5
+    
+    private let timeout: Double = 5
     private var repository: ForecastRepositoryType!
     private var cancellables: Set<AnyCancellable>!
-
-    //TODO: change do a Spy
-    private var remoteDataSource: ForecastRemoteDataSourceType!
-    private var localDataSource: ForecastLocalDataSourceType!
+    
+    //TODO: change to a Spy
+    private var forecastRemoteDataSource: ForecastRemoteDataSourceType!
+    private var forecastLocalDataSource: ForecastLocalDataSourceType!
     private var httpClient: AJHttpClientType!
-
-
+    private var cityLocalDataSource: CityLocalDataSource!
+    private var forecastDetailLocalDataSource: ForecastDetailLocalDataSource!
+    private var weatherLocalDataSource: WeatherLocalDataSource!
+    
     override func setUpWithError() throws {
+        
+        CoreDataManager.getInstance(inMemory: true).initialize()
+        
         cancellables = []
         httpClient = AJHttpClient()
-        localDataSource = ForecastLocalDataSource()
-        remoteDataSource = ForecastRemoteDataSource(
+        cityLocalDataSource = CityLocalDataSource()
+        forecastDetailLocalDataSource = ForecastDetailLocalDataSource()
+        weatherLocalDataSource = WeatherLocalDataSource()
+        forecastLocalDataSource = ForecastLocalDataSource(
+            cityLocalDataSource: cityLocalDataSource,
+            forecastDetailLocalDataSource: forecastDetailLocalDataSource,
+            weatherLocalDataSource: weatherLocalDataSource
+        )
+        forecastRemoteDataSource = ForecastRemoteDataSource(
             httpClient: httpClient
         )
         repository = ForecastRepository(
-            remoteDataSource: remoteDataSource,
-            localDataSource: localDataSource
+            remoteDataSource: forecastRemoteDataSource,
+            localDataSource: forecastLocalDataSource
         )
     }
-
+    
     override func tearDownWithError() throws {
-
-        remoteDataSource = nil
+        
+        forecastLocalDataSource = nil
+        forecastRemoteDataSource = nil
         httpClient = nil
         cancellables.removeAll()
         cancellables = nil
-
+        cityLocalDataSource = nil
+        forecastDetailLocalDataSource = nil
+        weatherLocalDataSource = nil
     }
-
-
-
+    
+    
+    
     func test_getBy_WhenSuccess_ShouldReturnForecastDTO() throws {
-
+        
         //arrange
         let expectation = self.expectation(description: #function)
         let latitude: Float = 40.64
         let longitude: Float = -8.64
         let cityExpected = "Aveiro"
-        let cityIdExpected = 2742611
-
+        let cityIdExpected = "2742611"
+        
         //act
         repository.getBy(
             latitude: latitude,
             longitude: longitude
         )
         .sink(
-            receiveCompletion: { completion in
-
+            receiveCompletion: ({ completion in
+                
                 switch completion {
                 case .finished:
                     break
@@ -77,18 +92,20 @@ final class ForecastRepositoryTests: XCTestCase {
                     XCTFail(error.localizedDescription)
                 }
                 expectation.fulfill()
-
-            },
-            receiveValue: { forecastDTO in
+                
+            }),
+            receiveValue: ({ forecastDTO in
+                
                 //assert
-                XCTAssertEqual(forecastDTO.city.coord.lat,latitude)
-                XCTAssertEqual(forecastDTO.city.coord.lon,longitude)
+                XCTAssertEqual(forecastDTO.city.latitude,latitude)
+                XCTAssertEqual(forecastDTO.city.longitude,longitude)
                 XCTAssertEqual(forecastDTO.city.name,cityExpected)
                 XCTAssertEqual(forecastDTO.city.id,cityIdExpected)
-            }
+                
+            })
         )
         .store(in: &self.cancellables)
-
+        
         waitForExpectations(timeout: timeout)
     }
 }

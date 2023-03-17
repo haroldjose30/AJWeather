@@ -7,8 +7,9 @@
 
 public struct WeatherModel {
     
-    ///Weather condition id
     public let id: String
+    ///Weather condition id
+    public let weatherId: String
     ///Group of weather parameters (Rain, Snow, Extreme etc.)
     public let main: String
     public let description: String
@@ -16,12 +17,14 @@ public struct WeatherModel {
     
     public init(
         id: String,
+        weatherId: String,
         main: String,
         description: String,
         icon: String
     ) {
         
         self.id = id
+        self.weatherId = weatherId
         self.main = main
         self.description = description
         self.icon = icon

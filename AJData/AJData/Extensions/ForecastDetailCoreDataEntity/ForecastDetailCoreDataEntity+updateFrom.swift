@@ -17,6 +17,5 @@ extension ForecastDetailCoreDataEntity {
         self.tempMin = entity.tempMin
         self.tempMax = entity.tempMax
         self.humidity = entity.humidity.toInt32()
-        self.dtTxt = entity.dtTxt
     }
 }

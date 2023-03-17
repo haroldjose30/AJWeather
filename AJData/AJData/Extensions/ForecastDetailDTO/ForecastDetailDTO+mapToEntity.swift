@@ -13,13 +13,12 @@ extension ForecastDetailDTO {
         
         ForecastDetailEntity(
             fkCityId: fkCityId,
-            dt: self.dt,
-            temp: self.main.temp,
-            feelsLike: self.main.feelsLike,
-            tempMin: self.main.tempMin,
-            tempMax: self.main.tempMax,
-            humidity: self.main.humidity,
-            dtTxt: self.dtTxt
+            dt: self.date,
+            temp: self.temperature,
+            feelsLike: self.feelsLike,
+            tempMin: self.temperatureMin,
+            tempMax: self.temperatureMax,
+            humidity: self.humidity
         )
     }
 }

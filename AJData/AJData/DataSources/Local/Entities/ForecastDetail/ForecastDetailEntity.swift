@@ -17,6 +17,5 @@ struct ForecastDetailEntity: EntityType {
     let tempMin: Float
     let tempMax: Float
     let humidity: Int
-    let dtTxt: String
 }
 

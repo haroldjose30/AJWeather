@@ -14,6 +14,7 @@ public struct ForecastModel {
         city: CityModel,
         list: [ForecastDetailModel]
     ) {
+        
         self.city = city
         self.list = list
     }

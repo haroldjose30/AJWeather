@@ -1,11 +1,11 @@
 //
-//  CoordinateResponseDTO.swift
+//  CoordinateResponse.swift
 //  AJData
 //
 //  Created by Jose Harold on 15/03/2023.
 //
 
-struct CoordinateResponseDTO: Codable {
+struct CoordinateResponse: Codable {
     
     let lat: Float
     let lon: Float

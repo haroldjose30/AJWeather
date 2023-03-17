@@ -12,6 +12,6 @@ protocol ForecastRemoteDataSourceType {
     func getBy(
         latitude: Float,
         longitude: Float
-    ) -> Future<ForecastResponseDTO, Error>
+    ) -> Future<ForecastResponse, Error>
     
 }

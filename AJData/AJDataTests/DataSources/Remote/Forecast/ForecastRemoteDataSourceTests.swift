@@ -12,7 +12,7 @@ import Combine
 
 final class ForecastRemoteDataSourceTests: XCTestCase {
     
-    private let timeout:Float = 5
+    private let timeout: Double = 5
     private var remoteDataSource: ForecastRemoteDataSourceType!
     //TODO: change to a spy or mock
     private var httpClient: AJHttpClientType!

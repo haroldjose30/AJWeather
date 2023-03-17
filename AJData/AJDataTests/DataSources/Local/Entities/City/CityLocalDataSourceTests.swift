@@ -27,7 +27,7 @@ final class CityLocalDataSourceTests: XCTestCase {
 
     func test_CreateReadUpdateDelete_Success() async throws {
         
-        let entityId = 1000
+        let entityId = "1000"
         
         //act & assert ReadAll should be Empty
         let citiesEmpty = try await localDataSource.getAll()

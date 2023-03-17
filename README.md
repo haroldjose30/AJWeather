@@ -45,8 +45,8 @@ pin on the city’s coordinates.
 
 - [ ] Home Page
     - [X] Day section - 5 days
-    - [ ] every 3 hour forecast a cell: with Icon, time and temperature
-    - [ ] optional: With coredata, Store the city information for situations where there is not connection
+    - [X] every 3 hour forecast a cell: with Icon, time and temperature
+    - [X] optional: With coredata, Store the city information for situations where there is not connection
     - [ ] optional: download and cache icon. Do not bundle it in the App.
     - [ ] optional: search City bar
     

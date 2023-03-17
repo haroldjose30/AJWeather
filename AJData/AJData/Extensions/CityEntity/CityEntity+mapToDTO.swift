@@ -1,15 +1,15 @@
 //
-//  CityDTO+mapToEntity.swift
+//  CityEntity+mapToDTO.swift
 //  AJData
 //
-//  Created by Jose Harold on 16/03/2023.
+//  Created by Jose Harold on 17/03/2023.
 //
 
-extension CityDTO {
+extension CityEntity {
     
-    func mapToEntity() -> CityEntity {
+    func mapToDTO() -> CityDTO {
         
-        CityEntity(
+        CityDTO(
             id: self.id,
             name: self.name,
             latitude: self.latitude,
@@ -18,4 +18,3 @@ extension CityDTO {
         )
     }
 }
-

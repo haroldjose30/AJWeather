@@ -1,17 +1,17 @@
 //
-//  WeatherEntity+mapToDTO.swift.swift
+//  WeatherResponse+mapToDTO.swift
 //  AJData
 //
-//  Created by Jose Harold on 16/03/2023.
+//  Created by Jose Harold on 17/03/2023.
 //
 
-extension WeatherEntity {
+extension WeatherResponse {
     
     func mapToDTO() -> WeatherDTO {
         
         WeatherDTO(
-            id: self.id,
-            weatherId: self.weatherId,
+            id: String(self.id),
+            weatherId: String(self.id),
             main: self.main,
             description: self.description,
             icon: self.icon

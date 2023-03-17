@@ -16,8 +16,7 @@ extension ForecastDetailCoreDataEntity {
             feelsLike: self.feelsLike,
             tempMin: self.tempMin,
             tempMax: self.tempMax,
-            humidity: self.humidity.toInt(),
-            dtTxt: self.dtTxt ?? ""
+            humidity: self.humidity.toInt()
         )
     }
 }

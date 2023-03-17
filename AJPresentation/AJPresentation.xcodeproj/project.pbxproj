@@ -139,8 +139,8 @@
 			children = (
 				8480C8BF29BDD91600EFA553 /* AJPresentation */,
 				8480C8C929BDD91600EFA553 /* AJPresentationTests */,
-				8480C8BE29BDD91600EFA553 /* Products */,
 				8480C92429BE4EAB00EFA553 /* Frameworks */,
+				8480C8BE29BDD91600EFA553 /* Products */,
 			);
 			sourceTree = "<group>";
 		};

@@ -1,11 +1,11 @@
 //
-//  ForecastDetailDTO.swift
-//  AJData
+//  ForecastDetailModel.swift
+//  AJDomain
 //
-//  Created by Jose Harold on 16/03/2023.
+//  Created by Jose Harold on 12/03/2023.
 //
 
-public struct ForecastDetailDTO {
+public struct ForecastDetailModel {
     
     public let date: Int
     public let temperature: Float
@@ -13,7 +13,7 @@ public struct ForecastDetailDTO {
     public let temperatureMin: Float
     public let temperatureMax: Float
     public let humidity: Int
-    public let weather: [WeatherDTO]
+    public let weather: [WeatherModel]
     
     public init(
         date: Int,
@@ -22,7 +22,7 @@ public struct ForecastDetailDTO {
         temperatureMin: Float,
         temperatureMax: Float,
         humidity: Int,
-        weather: [WeatherDTO]
+        weather: [WeatherModel]
     ) {
         
         self.date = date

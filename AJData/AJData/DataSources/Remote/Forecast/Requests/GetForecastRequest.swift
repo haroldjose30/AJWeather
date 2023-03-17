@@ -9,7 +9,7 @@ import AJHttpClient
 
 struct GetForecastRequest: AJHttpRequestGetJson {
     
-    typealias ResponseType = ForecastResponseDTO
+    typealias ResponseType = ForecastResponse
     var queryParameters: AJHttpQueryParameters = [:]
     var urlBase: String
     var path: String

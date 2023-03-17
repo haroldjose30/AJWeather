@@ -32,7 +32,7 @@ final class GetForecastUseCase: GetForecastUseCaseType {
                 longitude: longitude
             )
             .map { forecastDTO -> ForecastModel in
-                forecastDTO.mapToForecastModel()
+                forecastDTO.mapToModel()
             }
             .subscribe(on: scheduler.execution)
             .receive(on: scheduler.postExecution)

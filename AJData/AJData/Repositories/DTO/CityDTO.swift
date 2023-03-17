@@ -9,19 +9,22 @@ public struct CityDTO {
     
     public let id: String
     public let name: String
-    public let coord: CoordinateDTO
+    public let latitude: Float
+    public let longitude: Float
     public let country: String
     
     public init(
         id: String,
         name: String,
-        coord: CoordinateDTO,
+        latitude: Float,
+        longitude: Float,
         country: String
     ) {
         
         self.id = id
         self.name = name
-        self.coord = coord
+        self.latitude = latitude
+        self.longitude = longitude
         self.country = country
     }
 }

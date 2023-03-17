@@ -12,16 +12,13 @@ extension ForecastDetailEntity {
     ) -> ForecastDetailDTO {
         
         ForecastDetailDTO(
-            dt: self.dt,
-            main: TemperatureDetailDTO(
-                temp: self.temp,
-                feelsLike: self.feelsLike,
-                tempMin: self.tempMin,
-                tempMax: self.tempMax,
-                humidity: self.humidity
-            ),
-            weather: weathers,
-            dtTxt: self.dtTxt
+            date: self.dt,
+            temperature: self.temp,
+            feelsLike: self.feelsLike,
+            temperatureMin: self.tempMin,
+            temperatureMax: self.tempMax,
+            humidity: self.humidity,
+            weather: weathers
         )
     }
 }

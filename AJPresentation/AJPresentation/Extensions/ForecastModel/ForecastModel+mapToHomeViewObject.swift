@@ -1,5 +1,5 @@
 //
-//  ForecastModel+mapToViewObject.swift
+//  ForecastModel+mapToHomeViewObject.swift
 //  AJPresentation
 //
 //  Created by Jose Harold on 13/03/2023.
@@ -37,7 +37,7 @@ extension ForecastModel {
                     dateViewObject?.hours.append(
                         HomeViewObject.HourViewObject(
                             time: time,
-                            temperature: "\(detail.main.temp) °C",
+                            temperature: "\(detail.temperature) °c",
                             iconUrl: getIconUrl(detail.weather.first?.icon),
                             description: detail.weather.first?.description ?? ""
                         )

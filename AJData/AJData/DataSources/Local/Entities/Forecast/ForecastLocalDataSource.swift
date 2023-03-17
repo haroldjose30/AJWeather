@@ -80,10 +80,10 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
     ) async throws -> ForecastDTO? {
         
         //Try to locate City
-        guard let city = try? await cityLocalDataSource.getBy(
+        guard let cityDTO = try? await cityLocalDataSource.getBy(
                 latitude: latitude,
                 longitude: longitude
-            )
+        ).map({ $0.mapToDTO() })
         else {
             return nil
         }
@@ -91,7 +91,7 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
         var forecastDetailDTOList: [ForecastDetailDTO] = []
         
         if let forecastDetailEntityList = try? await forecastDetailLocalDataSource.getAllBy(
-            cityId: city.id
+            cityId: cityDTO.id
         ) {
             
             for forecastDetailEntity in forecastDetailEntityList {
@@ -107,19 +107,8 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
         }
         
         return ForecastDTO(
-            cod: "",
-            message: 0,
-            cnt: 0,
-            list: forecastDetailDTOList,
-            city: CityDTO(
-                id: city.id,
-                name: city.name,
-                coord: CoordinateDTO(
-                    latitude: city.latitude,
-                    longitude: city.longitude
-                ),
-                country: city.country
-            )
+            city: cityDTO,
+            list: forecastDetailDTOList
         )
     }
 }

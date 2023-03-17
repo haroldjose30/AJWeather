@@ -1,11 +1,11 @@
 //
-//  WeatherResponseDTO.swift
+//  WeatherResponse.swift
 //  AJData
 //
 //  Created by Jose Harold on 15/03/2023.
 //
 
-struct WeatherResponseDTO: Codable {
+struct WeatherResponse: Codable {
     
     let id: Int
     let main: String

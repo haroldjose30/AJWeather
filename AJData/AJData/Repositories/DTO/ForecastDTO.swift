@@ -7,23 +7,15 @@
 
 public struct ForecastDTO {
     
-    public let cod: String
-    public let message: Int
-    public let cnt: Int
-    public let list: [ForecastDetailDTO]
     public let city: CityDTO
+    public let list: [ForecastDetailDTO]
     
     public init(
-        cod: String,
-        message: Int,
-        cnt: Int,
-        list: [ForecastDetailDTO],
-        city: CityDTO
+        city: CityDTO,
+        list: [ForecastDetailDTO]
     ) {
-        self.cod = cod
-        self.message = message
-        self.cnt = cnt
-        self.list = list
+        
         self.city = city
+        self.list = list
     }
 }

@@ -1,11 +1,11 @@
 //
-//  TemperatureDetailResponseDTO.swift
+//  TemperatureDetailResponse.swift
 //  AJData
 //
 //  Created by Jose Harold on 15/03/2023.
 //
 
-struct TemperatureDetailResponseDTO: Codable {
+struct TemperatureDetailResponse: Codable {
     
     let temp: Float
     let feelsLike: Float

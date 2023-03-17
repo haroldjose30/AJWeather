@@ -10,19 +10,13 @@ import AJData
 extension ForecastDTO {
     
     static func fixture(
-        cod: String = "",
-        message: Int = 0,
-        cnt: Int = 0,
-        list: [ForecastDetailDTO] = [],
-        city: CityDTO = CityDTO.fixture()
+        city: CityDTO = CityDTO.fixture(),
+        list: [ForecastDetailDTO] = []
     ) -> ForecastDTO {
         
         ForecastDTO(
-            cod: cod,
-            message: message,
-            cnt: cnt,
-            list: list,
-            city: city
+            city: city,
+            list: list
         )
     }
 }
@@ -30,31 +24,19 @@ extension ForecastDTO {
 extension CityDTO {
     
     static func fixture(
-        id: Int = 0,
+        id: String = "",
         name: String = "",
-        coord: CoordinateDTO = .fixture(),
+        latitude: Float = 0,
+        longitude: Float = 0,
         country: String = ""
     ) -> CityDTO {
         
         CityDTO(
             id: id,
             name: name,
-            coord: coord,
-            country: country
-        )
-    }
-}
-
-extension CoordinateDTO {
-    
-    static func fixture(
-        latitude: Float = 0,
-        longitude: Float = 0
-    ) -> CoordinateDTO {
-        
-        CoordinateDTO(
             latitude: latitude,
-            longitude: longitude
+            longitude: longitude,
+            country: country
         )
     }
 }
@@ -62,37 +44,23 @@ extension CoordinateDTO {
 extension ForecastDetailDTO {
     
     static func fixture(
-        dt: Int = 0,
-        main: TemperatureDetailDTO = .fixture(),
-        weather: [WeatherDTO] = [],
-        dtTxt: String = ""
+        date: Int = 0,
+        temperature: Float = 0,
+        feelsLike: Float = 0,
+        temperatureMin: Float = 0,
+        temperatureMax: Float = 0,
+        humidity: Int = 0,
+        weather: [WeatherDTO] = []
     ) -> ForecastDetailDTO {
         
         ForecastDetailDTO(
-            dt: dt,
-            main: main,
-            weather: weather,
-            dtTxt: dtTxt
-        )
-    }
-}
-
-extension TemperatureDetailDTO {
-    
-    static func fixture(
-        temp: Float = 0,
-        feelsLike: Float = 0,
-        tempMin: Float = 0,
-        tempMax: Float = 0,
-        humidity: Int = 0
-    ) -> TemperatureDetailDTO {
-        
-        TemperatureDetailDTO(
-            temp: temp,
+            date: date,
+            temperature: temperature,
             feelsLike: feelsLike,
-            tempMin: tempMin,
-            tempMax: tempMax,
-            humidity: humidity
+            temperatureMin: temperatureMin,
+            temperatureMax: temperatureMax,
+            humidity: humidity,
+            weather: weather
         )
     }
 }
@@ -100,7 +68,8 @@ extension TemperatureDetailDTO {
 extension WeatherDTO {
     
     static func fixture(
-        id: Int = 0,
+        id: String = "",
+        weatherId: String = "",
         main: String = "",
         description: String = "",
         icon: String = ""
@@ -108,6 +77,7 @@ extension WeatherDTO {
         
         WeatherDTO(
             id: id,
+            weatherId: weatherId,
             main: main,
             description: description,
             icon: icon

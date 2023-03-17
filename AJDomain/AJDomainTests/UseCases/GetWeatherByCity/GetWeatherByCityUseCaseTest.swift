@@ -46,7 +46,7 @@ final class GetWeatherByCityUseCaseTest: XCTestCase {
         
         let forecastDTOExpected = ForecastDTO.fixture(
             city: .fixture(
-                id: 2742611,
+                id: "2742611",
                 name: "Aveiro"
             )
         )
