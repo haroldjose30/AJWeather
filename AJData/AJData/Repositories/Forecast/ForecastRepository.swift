@@ -40,7 +40,7 @@ final class ForecastRepository: ForecastRepositoryType {
                 
                 Task {
                     guard
-                        let forecastDTO = try await self.localDataSource.getFromCacheBy(
+                        let forecastDTO = try? await self.localDataSource.getFromCacheBy(
                             latitude: latitude,
                             longitude: longitude
                         )
@@ -73,7 +73,7 @@ final class ForecastRepository: ForecastRepositoryType {
                     
                 }, receiveValue: { forecastResponseDTO in
                     
-                    let forecastDTO = forecastResponseDTO.maptoForecastDTO()
+                    let forecastDTO = forecastResponseDTO.mapToDTO()
                     Task {
                         //save remote data on local cache
                         try await self.localDataSource.saveInCache(forecastDTO)

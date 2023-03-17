@@ -99,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840C73F129C3C7F1007FB07C /* ForecastDTO */ = {
+			isa = PBXGroup;
+			children = (
+				8489035829C196D100991116 /* ForecastDTO+mapToForecastModel.swift */,
+			);
+			path = ForecastDTO;
+			sourceTree = "<group>";
+		};
 		8416BFA429C1D8B200D2CACF /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +181,7 @@
 			children = (
 				8480C8E229BDD96600EFA553 /* AJDomain.h */,
 				8480C93A29BE514200EFA553 /* DependencyInjection */,
-				8489035729C196A900991116 /* Mappers */,
+				8489035729C196A900991116 /* Extensions */,
 				8480C94929BE522A00EFA553 /* Models */,
 				8480C94A29BE523000EFA553 /* UseCases */,
 			);
@@ -237,12 +245,12 @@
 			path = Forecast;
 			sourceTree = "<group>";
 		};
-		8489035729C196A900991116 /* Mappers */ = {
+		8489035729C196A900991116 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8489035829C196D100991116 /* ForecastDTO+mapToForecastModel.swift */,
+				840C73F129C3C7F1007FB07C /* ForecastDTO */,
 			);
-			path = Mappers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

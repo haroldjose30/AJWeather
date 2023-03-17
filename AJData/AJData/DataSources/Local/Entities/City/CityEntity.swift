@@ -7,7 +7,7 @@
 
 struct CityEntity: EntityType {
     
-    var id: Int
+    var id: String
     let name: String
     let latitude: Float
     let longitude: Float

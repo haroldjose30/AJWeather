@@ -11,7 +11,7 @@ class CityLocalDataSource: GenericCoreDataSource<CityCoreDataEntity,CityEntity> 
     
     init() {
         super.init(
-            mapToEntity: { $0.mapToCityEntity() },
+            mapToEntity: { $0.mapToEntity() },
             updateCoreDataEntity: { $0.updateFrom($1) }
         )
     }
@@ -21,12 +21,10 @@ class CityLocalDataSource: GenericCoreDataSource<CityCoreDataEntity,CityEntity> 
         longitude: Float
     ) async throws -> CityEntity? {
         
-        
-        //Todo: not working with latitude and longitudo
-        //let epsilon: Float = 0.000001;
-        //let filter = NSPredicate(format: "latitude > %f AND latitude < %f AND longitude > %f AND longitude < %f", latitude - epsilon,  latitude + epsilon, longitude - epsilon, longitude + epsilon)
-        //workaround
-        let filter = NSPredicate(format: "id = %@", String(2742611))
+        //Todo: workaround to work with floats using latitude and longitude
+        let floatAdjust: Float = 0.000009;
+        let filter = NSPredicate(format: "latitude >= %f AND latitude =< %f AND longitude >= %f AND longitude =< %f", latitude - floatAdjust,  latitude + floatAdjust, longitude - floatAdjust, longitude + floatAdjust)
+        //let filter = NSPredicate(format: "id = %@", String(2742611))
         guard let coreDataEntity = try fetchBy(filter: filter) else {
             return nil
         }

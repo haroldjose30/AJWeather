@@ -7,13 +7,13 @@
 
 public struct CityDTO {
     
-    public let id: Int
+    public let id: String
     public let name: String
     public let coord: CoordinateDTO
     public let country: String
     
     public init(
-        id: Int,
+        id: String,
         name: String,
         coord: CoordinateDTO,
         country: String

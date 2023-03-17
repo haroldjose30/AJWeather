@@ -8,14 +8,14 @@
 public struct WeatherModel {
     
     ///Weather condition id
-    public let id: Int
+    public let id: String
     ///Group of weather parameters (Rain, Snow, Extreme etc.)
     public let main: String
     public let description: String
     public let icon: String
     
     public init(
-        id: Int,
+        id: String,
         main: String,
         description: String,
         icon: String

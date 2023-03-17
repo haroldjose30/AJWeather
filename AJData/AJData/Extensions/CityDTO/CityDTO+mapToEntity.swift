@@ -7,7 +7,7 @@
 
 extension CityDTO {
     
-    func mapToCityEntity() -> CityEntity {
+    func mapToEntity() -> CityEntity {
         
         CityEntity(
             id: self.id,

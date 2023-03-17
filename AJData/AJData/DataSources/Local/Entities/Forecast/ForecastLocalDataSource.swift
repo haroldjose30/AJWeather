@@ -9,25 +9,78 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
     
     //TODO: change to protocol to be testable
     private let cityLocalDataSource: CityLocalDataSource
+    private let forecastDetailLocalDataSource: ForecastDetailLocalDataSource
+    private let weatherLocalDataSource: WeatherLocalDataSource
     
-    init(cityLocalDataSource: CityLocalDataSource) {
+    init(
+        cityLocalDataSource: CityLocalDataSource,
+        forecastDetailLocalDataSource: ForecastDetailLocalDataSource,
+        weatherLocalDataSource: WeatherLocalDataSource
+    ) {
         self.cityLocalDataSource = cityLocalDataSource
+        self.forecastDetailLocalDataSource = forecastDetailLocalDataSource
+        self.weatherLocalDataSource = weatherLocalDataSource
     }
     
-    func saveInCache(_ forecastDTO: ForecastDTO) async throws {
+    func saveInCache(
+        _ forecastDTO: ForecastDTO
+    ) async throws {
         
-        let cityEntity = forecastDTO.city.mapToCityEntity()
-        try await cityLocalDataSource.create(entity: cityEntity)
+        //work in memory, like a transaction
+//        cityLocalDataSource.setAutomaticSaveContext(false)
+        
+//        defer {
+//            //return to automatic save
+//            cityLocalDataSource.setAutomaticSaveContext(true)
+//        }
+        
+        do {
+            
+            // MARK: - save cityEntity
+            let cityEntity = forecastDTO.city.mapToEntity()
+            try await cityLocalDataSource.create(entity: cityEntity)
+            
+            // MARK: - save forecastDetailEntity
+            for forecastDetailDTO in forecastDTO.list {
+                
+                let forecastDetailEntity = forecastDetailDTO.mapToEntity(
+                    fkCityId: cityEntity.id
+                )
+                
+                try await forecastDetailLocalDataSource.create(
+                    entity: forecastDetailEntity
+                )
+                
+                // MARK: - save weatherEntity
+                for weatherDTO in forecastDetailDTO.weather {
+                    
+                    let weatherEntity = weatherDTO.mapToEntity(
+                        fkForecastDetailId: forecastDetailEntity.id
+                    )
+                    
+                    try await weatherLocalDataSource.create(
+                        entity: weatherEntity
+                    )
+                }
+            }
+            
+            // MARK: - persist in database
+//            cityLocalDataSource.saveContext(forceSave: true)
+            
+        } catch let error {
+            
+            print("CoreDataError:",error.localizedDescription)
+//            cityLocalDataSource.rollback()
+        }
     }
     
     func getFromCacheBy(
         latitude: Float,
         longitude: Float
     ) async throws -> ForecastDTO? {
-      
         
-        guard
-            let city = try await cityLocalDataSource.getBy(
+        //Try to locate City
+        guard let city = try? await cityLocalDataSource.getBy(
                 latitude: latitude,
                 longitude: longitude
             )
@@ -35,11 +88,29 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
             return nil
         }
         
+        var forecastDetailDTOList: [ForecastDetailDTO] = []
+        
+        if let forecastDetailEntityList = try? await forecastDetailLocalDataSource.getAllBy(
+            cityId: city.id
+        ) {
+            
+            for forecastDetailEntity in forecastDetailEntityList {
+                
+                let weatherDTOList = try? await weatherLocalDataSource.getAllBy(
+                    fkForecastDetailId: forecastDetailEntity.id
+                ).map({ $0.mapToDTO() })
+                
+                let forecastDetailDTO = forecastDetailEntity.mapToDTO(weathers: weatherDTOList ?? [])
+                
+                forecastDetailDTOList.append(forecastDetailDTO)
+            }
+        }
+        
         return ForecastDTO(
             cod: "",
             message: 0,
             cnt: 0,
-            list: [],
+            list: forecastDetailDTOList,
             city: CityDTO(
                 id: city.id,
                 name: city.name,
@@ -50,6 +121,5 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
                 country: city.country
             )
         )
-        
     }
 }

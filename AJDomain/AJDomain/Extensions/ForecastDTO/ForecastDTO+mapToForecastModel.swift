@@ -13,7 +13,7 @@ extension ForecastDTO {
         
         ForecastModel(
             city: CityModel(
-                id: self.city.id,
+                id: String(self.city.id),
                 name: self.city.name,
                 coord: CoordinateModel(
                     latitude: self.city.coord.latitude,

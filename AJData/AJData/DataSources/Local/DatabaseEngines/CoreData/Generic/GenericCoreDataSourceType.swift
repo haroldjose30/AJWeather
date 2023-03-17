@@ -22,10 +22,14 @@ protocol GenericCoreDataSourceType {
     func getAll() async throws -> [Entity]
     
     func getById(
-        _ id: Int
+        _ id: String
     ) async throws -> Entity?
     
     func delete(
-        _ id: Int
+        _ id: String
     ) async throws
+    
+    func setAutomaticSaveContext(
+        _ isAutoSave: Bool
+    )
 }

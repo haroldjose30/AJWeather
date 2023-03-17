@@ -30,6 +30,7 @@ public struct CoreDataManager: DataBaseManagerType {
     private let persistentModelName = "AJWeatherModel"
     private let persistentModelExtension = ".xcdatamodeld"
     public private(set) var container: NSPersistentCloudKitContainer
+    private var isAutoSaveContextEnabled: Bool = true
     
     init(
         ///to use an in-memory store.
@@ -98,16 +99,24 @@ extension CoreDataManager {
 extension CoreDataManager {
     
     public func initialize() {
-        CoreDataManager.getInstance().saveContext()
+        CoreDataManager.getInstance().saveContext(forceSave: true)
     }
     
-    public func saveContext() {
+    public func saveContext(
+        forceSave: Bool? = nil
+    ) {
+        guard isAutoSaveContextEnabled || forceSave ?? false else {
+            print("CoreData","context NOT saved")
+            return
+        }
         
-        let context =  CoreDataManager.getInstance().container.viewContext
+        let context = CoreDataManager.getInstance().container.viewContext
         
         if context.hasChanges {
             do {
                 try context.save()
+                CoreDataManager._shared?.isAutoSaveContextEnabled = true
+                print("CoreData","context SAVED, automatic save context enabled")
             } catch let error {
                 //TODO: Show some error here
                 print("CoreDataManager","Error:",error)
@@ -115,8 +124,27 @@ extension CoreDataManager {
         }
     }
     
+    public func rollback() {
+       
+        let context = CoreDataManager.getInstance().container.viewContext
+        
+        if context.hasChanges {
+            context.rollback()
+        }
+        
+        CoreDataManager._shared?.isAutoSaveContextEnabled = true
+    }
+    
+    
+    
     public func dispose() {
         CoreDataManager._shared = nil
+    }
+    
+    public func setAutomaticSaveContext(
+        _ activate: Bool
+    ) {
+        CoreDataManager._shared?.isAutoSaveContextEnabled = activate
     }
 }
 

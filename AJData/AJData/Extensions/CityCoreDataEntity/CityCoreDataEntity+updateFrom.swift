@@ -9,7 +9,7 @@ extension CityCoreDataEntity {
     
     func updateFrom(_ entity: CityEntity) {
         
-        self.id = entity.id.toInt32()
+        self.id = entity.id
         self.name = entity.name
         self.latitude = entity.latitude.roundTo(6)
         self.longitude = entity.longitude.roundTo(6)

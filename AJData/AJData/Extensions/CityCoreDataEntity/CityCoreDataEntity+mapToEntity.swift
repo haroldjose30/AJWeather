@@ -7,9 +7,10 @@
 
 extension CityCoreDataEntity {
     
-    func mapToCityEntity() -> CityEntity {
+    func mapToEntity() -> CityEntity {
+        
         CityEntity(
-            id: self.id.toInt(),
+            id: self.id ?? "",
             name: self.name ?? "",
             latitude: self.latitude,
             longitude: self.longitude,

@@ -118,12 +118,12 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
-		8477C29129BEE661006992D0 /* Mappers */ = {
+		8477C29129BEE661006992D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8477C29229BEE67B006992D0 /* ForecastModel */,
 			);
-			path = Mappers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8477C29229BEE67B006992D0 /* ForecastModel */ = {
@@ -159,7 +159,7 @@
 				8480C8C029BDD91600EFA553 /* AJPresentation.h */,
 				8480C94129BE51B800EFA553 /* Components */,
 				8480C93929BE510900EFA553 /* DependencyInjection */,
-				8477C29129BEE661006992D0 /* Mappers */,
+				8477C29129BEE661006992D0 /* Extensions */,
 				8480C94229BE51C700EFA553 /* Pages */,
 				8477C27E29BEC7CF006992D0 /* Resources */,
 			);

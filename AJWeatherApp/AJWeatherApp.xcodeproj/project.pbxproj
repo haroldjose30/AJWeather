@@ -18,7 +18,6 @@
 		8416BFC929C21E9500D2CACF /* AJHttpClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8416BFC729C21E9500D2CACF /* AJHttpClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		84553B7629C2670100AB00C6 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84553B7529C2670100AB00C6 /* CoreDataTestView.swift */; };
 		8477C26929BEAB1B006992D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8477C26B29BEAB1B006992D0 /* Localizable.strings */; };
-		8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; };
 		8477C27129BEAF58006992D0 /* AJPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C26F29BEAF58006992D0 /* AJPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84B843E929C1523600A65394 /* AJDIContainer+registerAllServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B843E829C1523600A65394 /* AJDIContainer+registerAllServices.swift */; };
 		84B843EB29C1525E00A65394 /* AJDependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EA29C1525E00A65394 /* AJDependencyInjection */; };
@@ -99,7 +98,6 @@
 				84B843EB29C1525E00A65394 /* AJDependencyInjection in Frameworks */,
 				8416BFC529C21E8900D2CACF /* AJPresentation.framework in Frameworks */,
 				8416BFC229C21E7700D2CACF /* AJDomain.framework in Frameworks */,
-				8477C27029BEAF58006992D0 /* AJPresentation.framework in Frameworks */,
 				8416BFC829C21E9500D2CACF /* AJHttpClient in Frameworks */,
 				8416BFBF29C21E7300D2CACF /* AJData.framework in Frameworks */,
 			);

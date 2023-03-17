@@ -8,6 +8,9 @@
 public protocol DataBaseManagerType {
     
     func initialize()
-    func saveContext()
+    func saveContext(
+        forceSave: Bool?
+    )
+    func rollback()
     func dispose()
 }

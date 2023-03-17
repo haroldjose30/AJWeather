@@ -58,7 +58,7 @@ class GenericCoreDataSource<
     }
     
     func getById(
-        _ id: Int
+        _ id: String
     ) async throws -> Entity? {
         
         guard let coreDataEntity = try fetchBy(id: id) else {
@@ -68,7 +68,7 @@ class GenericCoreDataSource<
     }
     
     func delete(
-        _ id: Int
+        _ id: String
     ) async throws {
         
         guard let coreDataEntity = try fetchBy(id: id) else {
@@ -77,12 +77,20 @@ class GenericCoreDataSource<
         
         let context = container.viewContext
         context.delete(coreDataEntity)
-        do {
-            try context.save()
-        } catch {
-            context.rollback()
-            print(#function,"Error:",error.localizedDescription)
-        }
+        saveContext()
+        
+//        do {
+//            try context.save()
+//        } catch {
+//            context.rollback()
+//            print(#function,"Error:",error.localizedDescription)
+//        }
+    }
+    
+    func setAutomaticSaveContext(
+        _ activate: Bool
+    ) {
+        CoreDataManager.getInstance().setAutomaticSaveContext(activate)
     }
 }
 
@@ -92,16 +100,29 @@ extension GenericCoreDataSource {
     
     func fetchAll() throws -> [CoreDataEntity] {
         
+        try fetchAllBy()
+    }
+    
+    func fetchAllBy(
+        filter: NSPredicate? = nil
+    ) throws -> [CoreDataEntity] {
+        
         let request = NSFetchRequest<CoreDataEntity>(entityName: String(describing: CoreDataEntity.self))
+        if let filter {
+            request.predicate = filter
+        }
         let coreDataEntities = try container.viewContext.fetch(request)
         return coreDataEntities
     }
     
     func fetchBy(
-        id: Int
+        id: String
     ) throws -> CoreDataEntity? {
         
-        try fetchBy(filter: NSPredicate(format: "id = %@", String(id)))
+        let filter = NSPredicate(format: "id = %@", id)
+        return try fetchBy(
+            filter: filter
+        )
     }
     
     func fetchBy(
@@ -115,15 +136,13 @@ extension GenericCoreDataSource {
         return coreDataEntity
     }
     
-    func saveContext(){
-        
-        let context = container.viewContext
-        if context.hasChanges {
-            do{
-                try context.save()
-            }catch{
-                fatalError("Error: \(error.localizedDescription)")
-            }
-        }
+    func saveContext(
+        forceSave: Bool? = nil
+    ){
+        CoreDataManager.getInstance().saveContext(forceSave: forceSave)
+    }
+    
+    func rollback(){
+        CoreDataManager.getInstance().rollback()
     }
 }

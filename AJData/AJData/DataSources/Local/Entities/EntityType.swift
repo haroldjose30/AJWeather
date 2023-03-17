@@ -6,5 +6,15 @@
 //
 
 protocol EntityType: Identifiable, Equatable {
-    var id: Int { get }
+    
+    var id: String { get }
+}
+
+// MARK: - Equatable
+
+extension EntityType {
+    
+    static func == (lhs: any EntityType, rhs: any EntityType) -> Bool {
+        lhs.id == rhs.id
+    }
 }

@@ -7,7 +7,7 @@
 
 extension ForecastResponseDTO {
     
-    func maptoForecastDTO() -> ForecastDTO {
+    func mapToDTO() -> ForecastDTO {
         
         ForecastDTO(
             cod: self.cod,
@@ -25,7 +25,7 @@ extension ForecastResponseDTO {
                     ),
                     weather: forecastDetailResponseDTO.weather.map({ weatherResponseDTO in
                         WeatherDTO(
-                            id: weatherResponseDTO.id,
+                            id: String(weatherResponseDTO.id),
                             main: weatherResponseDTO.main,
                             description: weatherResponseDTO.description,
                             icon: weatherResponseDTO.icon
@@ -35,7 +35,7 @@ extension ForecastResponseDTO {
                 )
             }),
             city: CityDTO(
-                id: self.city.id,
+                id: String(self.city.id),
                 name: self.city.name,
                 coord: CoordinateDTO(
                     latitude: self.city.coord.lat,
