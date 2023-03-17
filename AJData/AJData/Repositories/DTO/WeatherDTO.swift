@@ -10,21 +10,21 @@ public struct WeatherDTO {
     public let id: String
     public let weatherId: String
     public let main: String
-    public let description: String
+    public let desc: String
     public let icon: String
     
     public init(
         id: String,
         weatherId: String,
         main: String,
-        description: String,
+        desc: String,
         icon: String
     ) {
         
         self.id = id
         self.weatherId = weatherId
         self.main = main
-        self.description = description
+        self.desc = desc
         self.icon = icon
     }
 }

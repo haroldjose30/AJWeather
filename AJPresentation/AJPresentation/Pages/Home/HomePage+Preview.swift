@@ -52,19 +52,19 @@ extension HomePage_Previews {
                     date: "Today",
                     hours: [
                         HomeViewObject.HourViewObject(
-                            time: "3:00am",
+                            time: "3:00 am",
                             temperature: "13 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "6:00am",
+                            time: "6:00 am",
                             temperature: "14 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "9:00am",
+                            time: "9:00 am",
                             temperature: "15 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
@@ -75,19 +75,25 @@ extension HomePage_Previews {
                     date: "Tomorow",
                     hours: [
                         HomeViewObject.HourViewObject(
-                            time: "3:00am",
+                            time: "3:00 am",
                             temperature: "13 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "6:00am",
+                            time: "6:00 am",
                             temperature: "14 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "9:00am",
+                            time: "9:00 am",
+                            temperature: "15 °C",
+                            iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
+                            description: "Clear Sky"
+                        ),
+                        HomeViewObject.HourViewObject(
+                            time: "12:00 pm",
                             temperature: "15 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
@@ -98,19 +104,19 @@ extension HomePage_Previews {
                     date: "15/03",
                     hours: [
                         HomeViewObject.HourViewObject(
-                            time: "3:00am",
+                            time: "3:00 am",
                             temperature: "13 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "6:00am",
+                            time: "6:00 am",
                             temperature: "14 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"
                         ),
                         HomeViewObject.HourViewObject(
-                            time: "9:00am",
+                            time: "9:00 am",
                             temperature: "15 °C",
                             iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
                             description: "Clear Sky"

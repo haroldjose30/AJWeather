@@ -14,6 +14,9 @@
 		84104C6F29C4227B003784E4 /* Int+toDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C6E29C4227B003784E4 /* Int+toDate.swift */; };
 		84104C7229C422CC003784E4 /* Date+formatterToRelative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C7129C422CC003784E4 /* Date+formatterToRelative.swift */; };
 		84104C7429C42395003784E4 /* Date+formatterToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C7329C42395003784E4 /* Date+formatterToTime.swift */; };
+		84104C7E29C4CD86003784E4 /* AppRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C7C29C4CD86003784E4 /* AppRouterView.swift */; };
+		84104C7F29C4CD86003784E4 /* AppRouterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C7D29C4CD86003784E4 /* AppRouterScreen.swift */; };
+		84104C8129C4CE23003784E4 /* AppRouterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84104C8029C4CE23003784E4 /* AppRouterState.swift */; };
 		8416BFCB29C2219F00D2CACF /* AJDependencyInjection in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 84B843EC29C1533700A65394 /* AJDependencyInjection */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8416BFCC29C221A900D2CACF /* AJDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; };
 		8416BFCD29C221A900D2CACF /* AJDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8477C28D29BEE2EA006992D0 /* AJDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -70,6 +73,9 @@
 		84104C6E29C4227B003784E4 /* Int+toDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+toDate.swift"; sourceTree = "<group>"; };
 		84104C7129C422CC003784E4 /* Date+formatterToRelative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formatterToRelative.swift"; sourceTree = "<group>"; };
 		84104C7329C42395003784E4 /* Date+formatterToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+formatterToTime.swift"; sourceTree = "<group>"; };
+		84104C7C29C4CD86003784E4 /* AppRouterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouterView.swift; sourceTree = "<group>"; };
+		84104C7D29C4CD86003784E4 /* AppRouterScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouterScreen.swift; sourceTree = "<group>"; };
+		84104C8029C4CE23003784E4 /* AppRouterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterState.swift; sourceTree = "<group>"; };
 		8477C26429BEA346006992D0 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		8477C26D29BEAE0B006992D0 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		8477C27529BEB90C006992D0 /* SuccessView+RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuccessView+RowView.swift"; sourceTree = "<group>"; };
@@ -133,6 +139,16 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		84104C7B29C4CD86003784E4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				84104C7C29C4CD86003784E4 /* AppRouterView.swift */,
+				84104C7D29C4CD86003784E4 /* AppRouterScreen.swift */,
+				84104C8029C4CE23003784E4 /* AppRouterState.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		8477C27E29BEC7CF006992D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +209,7 @@
 				8480C94129BE51B800EFA553 /* Components */,
 				8480C93929BE510900EFA553 /* DependencyInjection */,
 				8477C29129BEE661006992D0 /* Extensions */,
+				84104C7B29C4CD86003784E4 /* Navigation */,
 				8480C94229BE51C700EFA553 /* Pages */,
 				8477C27E29BEC7CF006992D0 /* Resources */,
 			);
@@ -420,6 +437,7 @@
 			files = (
 				84104C6429C400E2003784E4 /* CityDetailPage.swift in Sources */,
 				8477C26529BEA346006992D0 /* ImageView.swift in Sources */,
+				84104C7F29C4CD86003784E4 /* AppRouterScreen.swift in Sources */,
 				8480C97629BE8A7400EFA553 /* HomeViewObject.swift in Sources */,
 				8477C27829BEBA1C006992D0 /* SuccessView+SectionView.swift in Sources */,
 				8477C27629BEB90C006992D0 /* SuccessView+RowView.swift in Sources */,
@@ -431,9 +449,11 @@
 				8477C29429BEE69D006992D0 /* ForecastModel+mapToHomeViewObject.swift in Sources */,
 				84104C7229C422CC003784E4 /* Date+formatterToRelative.swift in Sources */,
 				8480C96D29BE7B3000EFA553 /* HomeSuccessView.swift in Sources */,
+				84104C7E29C4CD86003784E4 /* AppRouterView.swift in Sources */,
 				84104C6A29C405CC003784E4 /* CityDetailViewModelType.swift in Sources */,
 				84104C6829C403E3003784E4 /* HomeViewModelType.swift in Sources */,
 				84104C7429C42395003784E4 /* Date+formatterToTime.swift in Sources */,
+				84104C8129C4CE23003784E4 /* AppRouterState.swift in Sources */,
 				84104C6629C403A4003784E4 /* CityDetailViewModel.swift in Sources */,
 				8477C26E29BEAE0B006992D0 /* Localizable.swift in Sources */,
 				84B843EF29C1540300A65394 /* AJDIContainer+registerFromPresentation.swift in Sources */,

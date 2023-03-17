@@ -13,7 +13,7 @@ extension WeatherDTO {
             weatherId: self.id,
             fkForecastDetailId: fkForecastDetailId,
             main: self.main,
-            description: self.description,
+            desc: self.desc,
             icon: self.icon
         )
     }

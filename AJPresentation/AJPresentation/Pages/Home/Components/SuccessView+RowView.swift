@@ -21,7 +21,7 @@ extension HomeSuccessView {
                     Text(hour.time)
                         .font(.callout)
                         .padding(.bottom,4)
-                    Text(hour.description)
+                    Text(hour.desc)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }

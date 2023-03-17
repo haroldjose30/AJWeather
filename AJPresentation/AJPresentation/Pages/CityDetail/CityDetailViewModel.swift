@@ -12,32 +12,47 @@ import MapKit
 
 public class CityDetailViewModel: CityDetailViewModelType, ObservableObject {
 
-    public var city: CityModel
-    @Published public var mapRegion: MKCoordinateRegion
-    public var locations: [Location]
+    @Published public var city: CityModel? {
+        didSet {
+            guard let city else {
+                return
+            }
+            
+            self.mapRegion = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(
+                    latitude: CLLocationDegrees(city.latitude),
+                    longitude: CLLocationDegrees(city.longitude)
+                ),
+                span: MKCoordinateSpan(
+                    latitudeDelta: 0.03,
+                    longitudeDelta: 0.03
+                )
+            )
+            self.locations = []
+            self.locations.append(
+                Location(
+                    name: city.name,
+                    coordinate: CLLocationCoordinate2D(
+                        latitude: CLLocationDegrees(city.latitude),
+                        longitude: CLLocationDegrees(city.longitude)
+                    )
+                )
+            )
+        }
+    }
     
-    public init(
-        city: CityModel
-    ) {
-        self.city = city
+    @Published public var mapRegion: MKCoordinateRegion
+    @Published public var locations: [Location] = []
+    
+    public init() {
         self.mapRegion = MKCoordinateRegion(
             center: CLLocationCoordinate2D(
-                latitude: CLLocationDegrees(city.latitude),
-                longitude: CLLocationDegrees(city.longitude)
+                latitude: CLLocationDegrees(0),
+                longitude: CLLocationDegrees(0)
             ),
             span: MKCoordinateSpan(
                 latitudeDelta: 0.03,
                 longitudeDelta: 0.03
-            )
-        )
-        self.locations = []
-        self.locations.append(
-            Location(
-                name: city.name,
-                coordinate: CLLocationCoordinate2D(
-                    latitude: CLLocationDegrees(city.latitude),
-                    longitude: CLLocationDegrees(city.longitude)
-                )
             )
         )
     }

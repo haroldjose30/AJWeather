@@ -13,7 +13,7 @@ extension WeatherResponse {
             id: String(self.id),
             weatherId: String(self.id),
             main: self.main,
-            description: self.description,
+            desc: self.description,
             icon: self.icon
         )
     }

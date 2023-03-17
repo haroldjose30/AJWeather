@@ -22,100 +22,47 @@ present all the info of the city model, including a map view with a
 pin on the city’s coordinates. 
 
 ## Project Structure:
-- The project was divided into layers to avoid mistakes, and guarantee context responsibilities.
+- Overview: This project, although very simple, was designed and developed to be scalable and easy to maintain.
+Was divided in layers using Clean Code Archteture. This fisical layer define context responsibilities 
+and avoid commons mistakes for example: User a ForeCaseResponse in Presentation layer.
 
-### AJWeatherApp
-- IOS App, used to configure all dependency and deployment information
+### AJWeather
+- Type: IOS App Project
+- Responsability: Used to configure App startup, dependency injection, and deployment information and navigations
+- Note: For this project I used a very simplest router to finished the project, in a real project I´ll prefer to 
+use Coordinator Pattern with UIKit and avoid to use NavigationView from SwiftUI.
 
 ### AJPresentation
-- XCFramework project responsible for all UI Elements, here are all SwiftUI Pages, Components, ViewModels, and ViewObjects.
+- Type: XCFramework project
+- Responsability: Here we have all UI Elements, here are all SwiftUI Pages, Components, ViewModels, and ViewObjects.
 
 ### AJDomain
-- XCFramework project responsible for business domain rules. UseCase and Models will stay here.
+- Type: XCFramework project
+- Responsability: for business domain rules. UseCase and Models will stay here.
 
 ### AJData
-- XCFramework project responsible for  API requests, local database, repository, and DTOs.
+- Type: XCFramework project
+- Responsability: for API requests, local database, repository patterns, and DTOs.
 
 ### AJHttpClient
-- SPM - Swift Package Manager Project to be an independent component responsible for all HTTP request handlers.
+- Type: SPM - Swift Package Manager Project 
+- Responsability: to be an independent module responsible for all HTTP request handlers, can be shared with other projects.
+
 ### AJDependencyInjection
-- SPM - Swift Package Manager Project to be an independent component responsible for register and resolver dependency injections.
+- Type: SPM - Swift Package Manager Project 
+- Responsability: to be an independent module responsible for register and resolver dependency injections, can be shared with other projects.
 
 ## TODO:
 
-- [ ] Home Page
+- Home Page
     - [X] Day section - 5 days
     - [X] every 3 hour forecast a cell: with Icon, time and temperature
     - [X] optional: With coredata, Store the city information for situations where there is not connection
     - [ ] optional: search City bar
     - [ ] optional: download and cache icon. Do not bundle it in the App.
     
-- [ ] optional: Detail City Page
-    - [ ] detailed view for each city, present all the info of the city model
-    - [ ] map view with a pin on the city’s coordinates. 
+- Detail City Page
+    - [X] optional: detailed view for each city, present all the info of the city model
+    - [X] optional: map view with a pin on the city’s coordinates. 
     
 - [ ] optional: Search City Page
-  
-
-## Project Structure Draft:
-
-App/ -> IOS Main App
-    AppDelegate.swift
-    SceneDelegate.swift
-    Coordinators Or Router/
-        AppCoordinator.swift
-        WeatherListCoordinator.swift
-        CityDetailPageCoordinator.swift
-    DI/
-        AppDI.Swift
-  
-LibPresentation/ -> XCFramework
-    DI/
-        AppDI+Presentation.swift
-    Assets/
-    Components/
-        MapView.swift      
-    Pages/
-        WeatherListPage/
-            Components/
-                sample.Swift
-            WeatherListPage.swift
-            WeatherListPageViewModel.swift
-        CityDetailPage/
-            Components/
-                sample.Swift
-            CityDetailPage.swift
-            CityDetailPageViewModel.swift    
-
-LibDomain/ -> XCFramework
-    DI/
-        AppDI+Domain.swift
-    Model/
-        WeatherModel.swift
-        CityModel.swift
-    UseCases/
-        GetCityListByName.swift
-        GetWeatherByCity.swift
-
-LibData/ -> XCFramework
-    DI/
-        AppDI+Data.swift
-    DataSource
-        Remote/
-            CityApi.swift
-            WeatherApi.swift
-        Local/ -> CoreData
-            CityDatabase.swift
-            WeatherDatabase.swift
-    Repositories/
-        CityRepository.swift
-        WeatherRepository.swift
-    DTO
-        CityDTO.Swift
-        WeatherDTO.Swift
-
-LibHttp -> Swift Package Manager
-    ClientHttp.swift
-
-LibDI -> Swift Package Manager
-    ServiceLocator.swift

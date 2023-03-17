@@ -13,7 +13,7 @@ extension WeatherEntity {
             id: self.id,
             weatherId: self.weatherId,
             main: self.main,
-            description: self.description,
+            desc: self.desc,
             icon: self.icon
         )
     }

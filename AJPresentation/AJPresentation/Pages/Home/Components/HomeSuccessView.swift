@@ -10,68 +10,79 @@ import AJDependencyInjection
 import AJDomain
 
 struct HomeSuccessView: View {
-   
+    
     let city: CityModel
-    let data: HomeViewObject
+    let homeViewObject: HomeViewObject
     let reloadAction: () -> Void
     
     init(
         city: CityModel,
-        data: HomeViewObject,
+        homeViewObject: HomeViewObject,
         reloadAction: @escaping () -> Void
     ) {
-        self.data = data
+        self.homeViewObject = homeViewObject
         self.reloadAction = reloadAction
         self.city = city
     }
     
-   
-    
     var body: some View {
         
-        NavigationView  {
-            VStack {
-                
-                ZStack {
-                    
-                    VStack {
-                        Text(data.title)
-                            .font(.title)
+        VStack {
+            
+            HeaderView(
+                title: homeViewObject.title,
+                city: city
+            )
+            
+            if homeViewObject.dates.isEmpty {
+                EmptyDateView(reloadAction:reloadAction)
+            } else {
+                List(homeViewObject.dates, id: \.date) { dateGroup in
+                    Section(header: SectionView(text: dateGroup.date)) {
+                        SectionListView(
+                            hours: dateGroup.hours
+                        )
                     }
-                    
-                    HStack {
-                        Spacer()
-                        NavigationLink(destination: CityDetailPage(viewModel: CityDetailViewModel(city: city))) {
-                            Image(systemName: "map")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30,height:30)
-                        }
-                    }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
-                    
+                }.listStyle(.insetGrouped)
+                
+                Button(Localizable.reload) {
+                    reloadAction()
+                }
+            }
+            
+        }
+    }
+    
+    private struct HeaderView: View {
+        
+        let title: String
+        let city: CityModel
+        @EnvironmentObject private var appRouter: AppRouterState
+        
+        var body: some View {
+            ZStack {
+                VStack {
+                    Text(title)
+                        .font(.title)
                 }
                 
-                if data.dates.isEmpty {
-                    EmptyDateView(reloadAction:reloadAction)
-                } else {
-                    List(data.dates, id: \.date) { dateGroup in
-                        Section(header: SectionView(text: dateGroup.date)) {
-                            SectionListView(
-                                hours: dateGroup.hours
-                            )
-                        }
-                    }.listStyle(.insetGrouped)
-                    
-                    Button(Localizable.reload) {
-                        reloadAction()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        appRouter.currentPage = .cityDetailPage(city:city)
+                    }) {
+                        Image(systemName: "map")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30,height:30)
                     }
-                }
-                
+                }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
             }
         }
     }
     
     private struct SectionListView: View {
+        
         var hours: [HomeViewObject.HourViewObject]
         
         @State private var rowsShowed = 3
@@ -147,7 +158,7 @@ struct HomeSuccessView_Previews: PreviewProvider {
                 sunrise: 0,
                 sunset: 0)
             ,
-            data: HomeViewObject(
+                    homeViewObject: HomeViewObject(
                 city: CityModel(
                     id: "2742611",
                     name: "Aveiro",
@@ -311,5 +322,6 @@ struct HomeSuccessView_Previews: PreviewProvider {
             ),
             reloadAction: {}
         )
+        .environmentObject(AppRouterState())
     }
 }

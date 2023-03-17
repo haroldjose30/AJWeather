@@ -12,7 +12,7 @@ extension WeatherCoreDataEntity {
         self.weatherId = entity.weatherId
         self.fkForecastDetailId = entity.fkForecastDetailId
         self.main = entity.main
-        self.desc = entity.description
+        self.desc = entity.desc
         self.icon = entity.icon
     }
 }

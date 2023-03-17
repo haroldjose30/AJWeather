@@ -35,7 +35,7 @@ extension ForecastDTO {
                             id: weatherDTO.id,
                             weatherId: weatherDTO.weatherId,
                             main: weatherDTO.main,
-                            description: weatherDTO.description,
+                            description: weatherDTO.desc,
                             icon: weatherDTO.icon
                         )
                     })

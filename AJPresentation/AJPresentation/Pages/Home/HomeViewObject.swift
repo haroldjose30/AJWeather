@@ -49,7 +49,7 @@ extension HomeViewObject {
         var time: String
         var temperature: String
         var iconUrl: String
-        var description: String
+        var desc: String
         
         public init(
             time: String,
@@ -61,7 +61,7 @@ extension HomeViewObject {
             self.time = time
             self.temperature = temperature
             self.iconUrl = iconUrl
-            self.description = description
+            self.desc = description
         }
     }
     

@@ -85,7 +85,7 @@ extension WeatherDTO {
             id: id,
             weatherId: weatherId,
             main: main,
-            description: description,
+            desc: description,
             icon: icon
         )
     }

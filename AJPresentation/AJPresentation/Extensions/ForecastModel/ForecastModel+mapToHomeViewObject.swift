@@ -39,7 +39,7 @@ extension ForecastModel {
                             time: time,
                             temperature: "\(detail.temperature) °c",
                             iconUrl: getIconUrl(detail.weather.first?.icon),
-                            description: detail.weather.first?.description ?? ""
+                            description: detail.weather.first?.desc ?? ""
                         )
                     )
                 }

@@ -12,6 +12,7 @@ public extension AJDIContainer {
     
     func registerFromData() {
         
+        //Inicialize CoreData services
         CoreDataManager.getInstance().initialize()
         
         self.register(type: AJHttpClientType.self) { _ in

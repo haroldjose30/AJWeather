@@ -10,7 +10,6 @@ import SwiftUI
 import AJDomain
 import MapKit
 
-
 public struct CityDetailPage<ViewModel>: View where ViewModel: CityDetailViewModelType {
     
     @StateObject var viewModel: ViewModel
@@ -46,50 +45,55 @@ public struct CityDetailPage<ViewModel>: View where ViewModel: CityDetailViewMod
     }
     
     private struct HeaderView: View {
-        
-        let city: CityModel
+        @EnvironmentObject private var appRouter: AppRouterState
+        let city: CityModel?
         @Binding var isPresented: Bool
         var body: some View {
             
-            ZStack {
-                
+            HStack {
+                Button {
+                    appRouter.currentPage = .homePage
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30,height:30)
+                    
+                }
+                Spacer()
                 VStack {
-                    Text("\(city.name),\(city.country)")
+                    Text("\(city?.name ?? ""),\(city?.country ?? "")")
                         .font(.title)
-                    Text("\(city.latitude) , \(city.longitude)")
+                    Text("\(city?.latitude ?? 0) , \(city?.longitude ?? 0)")
                         .font(.caption)
                 }
-                
-                HStack {
-                    Spacer()
-                    Button {
-                        isPresented.toggle()
-                    } label: {
-                        Image(systemName: "info.bubble.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30,height:30)
-                        
-                    }
-                }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
-                
-            }
+                Spacer()
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Image(systemName: "info.bubble.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30,height:30)
+                    
+                }
+            }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
         }
     }
     
     private struct SheetView: View {
         
-        let city: CityModel
+        let city: CityModel?
         var body: some View {
             List {
                 
                 Section(header:Text("Population")) {
-                    RowView(infoDetail: "\(city.population)", icon: "figure.2.and.child.holdinghands")
+                    RowView(infoDetail: "\(city?.population ?? 0)", icon: "figure.2.and.child.holdinghands")
                 }
                 
                 Section(header:Text("Sunrise & Sunset")) {
-                    RowView(infoDetail: "\(city.sunrise.toDate().formatterToTime())", icon: "sunrise.fill")
-                    RowView(infoDetail: "\(city.sunset.toDate().formatterToTime())", icon: "sunset.fill")
+                    RowView(infoDetail: city?.sunrise.toDate().formatterToTime() ?? "", icon: "sunrise.fill")
+                    RowView(infoDetail: city?.sunset.toDate().formatterToTime() ?? "", icon: "sunset.fill")
                 }
             }
         }
@@ -121,21 +125,20 @@ struct CityDetailPage_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        CityDetailPage(
-            viewModel:
-                CityDetailViewModel(
-                    city: CityModel(
-                        id: "2742611",
-                        name: "Aveiro",
-                        latitude: 40.64,
-                        longitude: -8.64,
-                        country: "PT",
-                        population: 54162,
-                        sunrise: 1679035421,
-                        sunset: 1679078546
-                    )
-                )
-            
+        let city = CityModel(
+            id: "2742611",
+            name: "Aveiro",
+            latitude: 40.64,
+            longitude: -8.64,
+            country: "PT",
+            population: 54162,
+            sunrise: 1679035421,
+            sunset: 1679078546
         )
+        let viewModelWithCity = CityDetailViewModel()
+        viewModelWithCity.city = city
+        
+        return  CityDetailPage(viewModel: viewModelWithCity)
+            .previewDisplayName("Default")
     }
 }

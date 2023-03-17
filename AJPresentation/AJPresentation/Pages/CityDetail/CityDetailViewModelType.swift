@@ -9,7 +9,8 @@ import MapKit
 import AJDomain
 
 public protocol CityDetailViewModelType: ObservableObject {
+    
     var mapRegion: MKCoordinateRegion { get set }
     var locations: [Location] { get set }
-    var city: CityModel { get set }
+    var city: CityModel? { get set }
 }

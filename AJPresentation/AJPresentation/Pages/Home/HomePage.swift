@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import AJDependencyInjection
 
 public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
     
-    @StateObject var viewModel: ViewModel    
+    @StateObject var viewModel: ViewModel
+    
     public init(
         viewModel: ViewModel
     ) {
@@ -33,7 +35,7 @@ public struct HomePage<ViewModel>: View where ViewModel: HomeViewModelType {
             case .success(let data):
                 HomeSuccessView(
                     city: data.city,
-                    data: data,
+                            homeViewObject: data,
                     reloadAction: {
                         viewModel.loadData()
                     }

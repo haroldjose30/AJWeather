@@ -15,28 +15,17 @@ struct AJWeatherApp: App {
     
     @Environment(\.scenePhase) var scenePhase
     
-    private let viewModel: HomeViewModel
-    
     init() {
-        
+        //Inicialize Dependency Services
         AJDIContainer().registerAllServices()
-        
-        //TODO: add to a coordinator
-        guard let viewModel = try? AJDIContainer().resolve(type: HomeViewModel.self) else {
-            fatalError("HomeViewModel not registered on DI")
-        }
-        self.viewModel = viewModel
     }
     
     var body: some Scene {
 
         return WindowGroup {
-            HomePage<HomeViewModel>(
-                viewModel: viewModel
-            )
-          
-//            CoreDataTestView()
-//                .environment(\.managedObjectContext, CoreDataManager.shared.container.viewContext)
+            AppRouterView()
+                .environmentObject(AppRouterState())
+           
         }.onChange(of: scenePhase) { _ in
             
             //TODO: Add an UseCase to Save DataBase and avoid direct access
@@ -44,3 +33,5 @@ struct AJWeatherApp: App {
         }
     }
 }
+
+

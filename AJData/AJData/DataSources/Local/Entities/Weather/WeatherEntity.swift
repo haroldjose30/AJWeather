@@ -13,7 +13,7 @@ struct WeatherEntity: EntityType {
     let weatherId: String
     let fkForecastDetailId: String
     let main: String
-    let description: String
+    let desc: String
     let icon: String
 }
 
