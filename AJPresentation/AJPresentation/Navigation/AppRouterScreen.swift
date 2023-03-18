@@ -8,7 +8,8 @@
 import AJDomain
 
 public enum AppRouterScreen {
-    case homePage
+    case homePage(city: CityModel?)
     case cityDetailPage(city: CityModel)
+    case citySearchPage
 }
 

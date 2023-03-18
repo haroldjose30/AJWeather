@@ -9,9 +9,10 @@ import SwiftUI
 import AJDependencyInjection
 import AJDomain
 
+
+///Note: For this project I used a very simplest router to finished the project, in a real project I´ll prefer to
+///use Coordinator Pattern with UIKit and avoid to use NavigationView from SwiftUI.
 public struct AppRouterView: View {
-    
-    @AJInjected var homeViewModel: HomeViewModel
     
     @EnvironmentObject private var appRouter: AppRouterState
     
@@ -20,24 +21,52 @@ public struct AppRouterView: View {
     public var body: some View {        
         
         switch appRouter.currentPage {
-        case .homePage:
-           HomePage(viewModel: homeViewModel)
+            
+        case .homePage(let city):
+          GoToHomePage(city: city)
+            
         case .cityDetailPage(let city):
-            CityDetailPagePrepared(city: city)
+            GoToCityDetailPage(city: city)
+            
+        case .citySearchPage:
+            GoToCitySearchPage()
         }
     }
     
-    private struct CityDetailPagePrepared: View {
+    private struct GoToHomePage: View {
         
-        @AJInjected var cityDetailViewModel: CityDetailViewModel
-        let city: CityModel
-        init(city: CityModel) {
-            self.city = city
-            cityDetailViewModel.city = city
+        @AJInjected var viewModel: HomeViewModel
+        
+        init(city: CityModel?) {
+            if let city {
+                viewModel.city = city
+            }
         }
         
         var body: some View {
-            CityDetailPage(viewModel: cityDetailViewModel)
+            HomePage(viewModel: viewModel)
+        }
+    }
+    
+    private struct GoToCityDetailPage: View {
+        
+        @AJInjected var viewModel: CityDetailViewModel
+        
+        init(city: CityModel) {
+            viewModel.city = city
+        }
+        
+        var body: some View {
+            CityDetailPage(viewModel: viewModel)
+        }
+    }
+    
+    private struct GoToCitySearchPage: View {
+        
+        @AJInjected var viewModel: CitySearchViewModel
+        
+        var body: some View {
+            CitySearchPage(viewModel: viewModel)
         }
     }
 }

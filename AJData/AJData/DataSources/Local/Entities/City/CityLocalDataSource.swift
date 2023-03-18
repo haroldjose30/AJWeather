@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Combine
 
 class CityLocalDataSource: GenericCoreDataSource<CityCoreDataEntity,CityEntity>  {
     
@@ -23,13 +24,28 @@ class CityLocalDataSource: GenericCoreDataSource<CityCoreDataEntity,CityEntity> 
         
         //Todo: workaround to work with floats using latitude and longitude
         let floatAdjust: Float = 0.000009;
-        let filter = NSPredicate(format: "latitude >= %f AND latitude =< %f AND longitude >= %f AND longitude =< %f", latitude - floatAdjust,  latitude + floatAdjust, longitude - floatAdjust, longitude + floatAdjust)
-        //let filter = NSPredicate(format: "id = %@", String(2742611))
+        let filter = NSPredicate(
+            format: "latitude >= %f AND latitude =< %f AND longitude >= %f AND longitude =< %f",
+            latitude - floatAdjust,
+            latitude + floatAdjust,
+            longitude - floatAdjust,
+            longitude + floatAdjust
+        )
+        
         guard let coreDataEntity = try fetchBy(filter: filter) else {
             return nil
         }
         return mapToEntity(coreDataEntity)
         
+    }
+    
+    func getAllRx() -> AnyPublisher<[CityEntity], Error> {
+        
+        let cityEntities = try? fetchAll().map({ $0.mapToEntity() })
+        
+        return Just(cityEntities ?? [])
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
     
 }

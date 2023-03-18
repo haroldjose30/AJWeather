@@ -22,5 +22,12 @@ public extension AJDIContainer {
                 scheduler: try container.resolve(type: SchedulerType.self)
             )
         }
+        
+        self.register(type: GetCitiesByNameUseCaseType.self) { container in
+            GetCitiesByNameUseCase(
+                repository: try container.resolve(type: CityRepositoryType.self),
+                scheduler: try container.resolve(type: SchedulerType.self)
+            )
+        }
     }
 }

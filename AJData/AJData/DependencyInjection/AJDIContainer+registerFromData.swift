@@ -39,5 +39,18 @@ public extension AJDIContainer {
                 localDataSource: try container.resolve(type: ForecastLocalDataSourceType.self)
             )
         }
+        
+        self.register(type: CityRemoteDataSourceType.self) { container in
+            CityRemoteDataSource(
+                httpClient: try container.resolve(type: AJHttpClientType.self)
+            )
+        }
+        
+        self.register(type: CityRepositoryType.self) { container in
+            CityRepository(
+                cityLocalDataSource: CityLocalDataSource(),
+                cityRemoteDataSource:  try container.resolve(type: CityRemoteDataSourceType.self)
+            )
+        }
     }
 }

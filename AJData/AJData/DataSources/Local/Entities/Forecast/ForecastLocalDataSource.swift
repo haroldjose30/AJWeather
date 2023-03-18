@@ -26,7 +26,9 @@ final class ForecastLocalDataSource: ForecastLocalDataSourceType {
         _ forecastDTO: ForecastDTO
     ) async throws {
         
-        //work in memory, like a transaction
+        //TODO: I Tryed to work first in memory, like a transaction, and improve perfomance, but I have throbles with coreData
+        //I need to search the bether way to do this in memory and save all after completed
+        
 //        cityLocalDataSource.setAutomaticSaveContext(false)
         
 //        defer {

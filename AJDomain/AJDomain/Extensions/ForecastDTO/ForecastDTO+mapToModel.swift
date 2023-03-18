@@ -12,16 +12,7 @@ extension ForecastDTO {
     func mapToModel() -> ForecastModel {
         
         ForecastModel(
-            city: CityModel(
-                id: self.city.id,
-                name: self.city.name,
-                latitude: self.city.latitude,
-                longitude: self.city.longitude,
-                country: self.city.country,
-                population: self.city.population,
-                sunrise: self.city.sunrise,
-                sunset: self.city.sunset
-            ),
+            city: self.city.mapToModel(),
             list: self.list.map({ forecastDetailDTO in
                 ForecastDetailModel(
                     date: forecastDetailDTO.date,

@@ -13,6 +13,7 @@ struct FailedView: View {
     var body: some View {
         VStack {
             Text(message ?? Localizable.genericError)
+                .foregroundColor(.red)
             if let action = action {
                 Button(Localizable.retry) {
                     action()

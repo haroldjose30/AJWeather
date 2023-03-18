@@ -58,11 +58,15 @@ use Coordinator Pattern with UIKit and avoid to use NavigationView from SwiftUI.
     - [X] Day section - 5 days
     - [X] every 3 hour forecast a cell: with Icon, time and temperature
     - [X] optional: With coredata, Store the city information for situations where there is not connection
-    - [ ] optional: search City bar
     - [ ] optional: download and cache icon. Do not bundle it in the App.
     
 - Detail City Page
     - [X] optional: detailed view for each city, present all the info of the city model
     - [X] optional: map view with a pin on the city’s coordinates. 
     
-- [ ] optional: Search City Page
+- [] optional: Search City Page
+    - [X] optional: search City bar
+
+
+### IMPORTANT NOTE:
+This was my first time using Core Data, some intermitent error happended, I´ll search why.

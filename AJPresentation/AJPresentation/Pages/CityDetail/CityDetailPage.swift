@@ -52,13 +52,9 @@ public struct CityDetailPage<ViewModel>: View where ViewModel: CityDetailViewMod
             
             HStack {
                 Button {
-                    appRouter.currentPage = .homePage
+                    appRouter.currentPage = .homePage(city: nil)
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30,height:30)
-                    
                 }
                 Spacer()
                 VStack {
@@ -72,12 +68,8 @@ public struct CityDetailPage<ViewModel>: View where ViewModel: CityDetailViewMod
                     isPresented.toggle()
                 } label: {
                     Image(systemName: "info.bubble.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30,height:30)
-                    
                 }
-            }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
+            }.padding(EdgeInsets(top: 0,leading: 8,bottom: 0,trailing: 8))
         }
     }
     

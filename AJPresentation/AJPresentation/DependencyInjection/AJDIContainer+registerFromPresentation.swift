@@ -14,12 +14,18 @@ public extension AJDIContainer {
         
         self.register(type: HomeViewModel.self) { container in
             HomeViewModel(
-                getWeatherByCityUseCase: try container.resolve(type: GetForecastUseCaseType.self)
+                getForecastUseCase: try container.resolve(type: GetForecastUseCaseType.self)
             )
         }
         
         self.register(type: CityDetailViewModel.self) { container in
             CityDetailViewModel()
+        }
+        
+        self.register(type: CitySearchViewModel.self) { container in
+            CitySearchViewModel(
+                getCitiesByNameUseCase:  try container.resolve(type: GetCitiesByNameUseCaseType.self)
+            )
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  GetWeatherByCityUseCaseTest.swift
+//  GetForecastUseCaseTest.swift
 //  AJDomainTests
 //
 //  Created by Jose Harold on 13/03/2023.
@@ -10,7 +10,7 @@ import Combine
 @testable import AJDomain
 import AJData
 
-final class GetWeatherByCityUseCaseTest: XCTestCase {
+final class GetForecastUseCaseTest: XCTestCase {
     
     private let timeout:Double = 5
     private var cancellables: Set<AnyCancellable>!

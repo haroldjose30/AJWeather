@@ -52,22 +52,22 @@ struct HomePage_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        HomePage<FakeHomeViewMode>(
+        HomePage(
             viewModel: FakeHomeViewMode()
         )
         .previewDisplayName("Default")
         
-        HomePage<FakeHomeViewModeWithEmptyDate>(
+        HomePage(
             viewModel: FakeHomeViewModeWithEmptyDate()
         )
         .previewDisplayName("EmptyDate")
         
-        HomePage<FakeHomeViewModeWithError>(
+        HomePage(
             viewModel: FakeHomeViewModeWithError()
         )
         .previewDisplayName("Error")
         
-        HomePage<FakeHomeViewModeWithIdle>(
+        HomePage(
             viewModel: FakeHomeViewModeWithIdle()
         )
         .previewDisplayName("Idle")

@@ -7,7 +7,7 @@
 
 public class AppRouterState: ObservableObject {
     
-    @Published var currentPage: AppRouterScreen = .homePage
+    @Published var currentPage: AppRouterScreen = .homePage(city: nil)
     
     public init(){}
 }

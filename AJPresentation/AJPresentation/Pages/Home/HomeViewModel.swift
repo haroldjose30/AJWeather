@@ -12,24 +12,35 @@ import Combine
 public class HomeViewModel: HomeViewModelType,ObservableObject {
     
     @Published public var viewState: ViewState<HomeViewObject> = .idle
-    private let getWeatherByCityUseCase: GetForecastUseCaseType
+    private let getForecastUseCase: GetForecastUseCaseType
     private var cancellables: Set<AnyCancellable> = []
-    private let latitude: Float = 40.64
-    private let longitude: Float = -8.64
+    
+    //Todo: get current position from user - Default Aveiro,PT
+    private var latitudeDefault: Float = 40.64
+    private var longitudeDefault: Float = -8.64
+    
+    var city: CityModel? {
+        didSet {
+            if let city {
+                latitudeDefault = city.latitude
+                longitudeDefault = city.longitude
+            }
+        }
+    }
     
     public init(
-        getWeatherByCityUseCase: GetForecastUseCaseType
+        getForecastUseCase: GetForecastUseCaseType
     ) {
-        self.getWeatherByCityUseCase = getWeatherByCityUseCase
+        self.getForecastUseCase = getForecastUseCase
     }
     
     public func loadData() {
-        viewState = .loading
         
-        getWeatherByCityUseCase
+        viewState = .loading        
+        getForecastUseCase
             .execute(
-                latitude: latitude,
-                longitude: longitude
+                latitude: latitudeDefault,
+                longitude: longitudeDefault
             )
             .sink(
                 receiveCompletion: {  [weak self] completion in

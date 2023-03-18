@@ -5,7 +5,7 @@
 //  Created by Jose Harold on 12/03/2023.
 //
 
-public struct CityModel {
+public struct CityModel: Identifiable {
     
     public let id: String
     public let name: String
@@ -17,14 +17,14 @@ public struct CityModel {
     public let sunset: Int
     
     public init(
-        id: String,
-        name: String,
-        latitude: Float,
-        longitude: Float,
-        country: String,
-        population: Int,
-        sunrise: Int,
-        sunset: Int
+        id: String = "",
+        name: String = "",
+        latitude: Float = 0,
+        longitude: Float = 0,
+        country: String = "",
+        population: Int = 0,
+        sunrise: Int = 0,
+        sunset: Int = 0
     ) {
         
         self.id = id

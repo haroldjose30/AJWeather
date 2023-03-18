@@ -44,12 +44,7 @@ struct HomeSuccessView: View {
                         )
                     }
                 }.listStyle(.insetGrouped)
-                
-                Button(Localizable.reload) {
-                    reloadAction()
-                }
             }
-            
         }
     }
     
@@ -60,24 +55,23 @@ struct HomeSuccessView: View {
         @EnvironmentObject private var appRouter: AppRouterState
         
         var body: some View {
-            ZStack {
-                VStack {
+            HStack {
+                Button(action: {
+                    appRouter.currentPage = .citySearchPage
+                }) {
+                    Image(systemName: "magnifyingglass")
+                    
                     Text(title)
-                        .font(.title)
+                        .font(.title2)
+                        .foregroundColor(.primary)
                 }
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        appRouter.currentPage = .cityDetailPage(city:city)
-                    }) {
-                        Image(systemName: "map")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30,height:30)
-                    }
-                }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 32))
-            }
+                Spacer()
+                Button(action: {
+                    appRouter.currentPage = .cityDetailPage(city:city)
+                }) {
+                    Image(systemName: "map")
+                }
+            }.padding(EdgeInsets(top: 0,leading: 16,bottom: 0,trailing: 16))
         }
     }
     
@@ -147,178 +141,24 @@ struct HomeSuccessView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        HomeSuccessView(
-            city: CityModel(
-                id: "",
-                name: "",
-                latitude: 0,
-                longitude: 0,
-                country: "",
-                population: 0,
-                sunrise: 0,
-                sunset: 0)
-            ,
-                    homeViewObject: HomeViewObject(
-                city: CityModel(
-                    id: "2742611",
-                    name: "Aveiro",
-                    latitude: 40.64,
-                    longitude: -8.64,
-                    country: "PT",
-                    population: 54162,
-                    sunrise: 1679035421,
-                    sunset: 1679078546
-                ),
+        let city = CityModel(
+            id: "2742611",
+            name: "Aveiro",
+            latitude: 40.64,
+            longitude: -8.64,
+            country: "PT",
+            population: 54162,
+            sunrise: 1679035421,
+            sunset: 1679078546
+        )
+        
+        
+        return HomeSuccessView(
+            city: city,
+            homeViewObject: HomeViewObject(
+                city: city,
                 title: "Aveiro,PT",
-                dates: [
-                    HomeViewObject.DateViewObject(
-                        date: "Today",
-                        hours: [
-                            HomeViewObject.HourViewObject(
-                                time: "3:00am",
-                                temperature: "13 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "6:00am",
-                                temperature: "14 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "9:00am",
-                                temperature: "15 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "12:00pm",
-                                temperature: "16 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "3:00pm",
-                                temperature: "18 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                        ]
-                    ),
-                    HomeViewObject.DateViewObject(
-                        date: "Tomorow",
-                        hours: [
-                            HomeViewObject.HourViewObject(
-                                time: "3:00am",
-                                temperature: "13 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "6:00am",
-                                temperature: "14 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "9:00am",
-                                temperature: "15 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                        ]
-                    ),
-                    HomeViewObject.DateViewObject(
-                        date: "15/03",
-                        hours: [
-                            HomeViewObject.HourViewObject(
-                                time: "3:00am",
-                                temperature: "13 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "6:00am",
-                                temperature: "14 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                            HomeViewObject.HourViewObject(
-                                time: "9:00am",
-                                temperature: "15 °C",
-                                iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
-                                description: "Clear Sky"
-                            ),
-                        ]
-                    ),
-                ]
+                dates: fakeDates
             ),
             reloadAction: {}
         )
